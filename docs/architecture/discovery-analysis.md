@@ -94,7 +94,12 @@ result producer; the application imports neither OpenAI nor infrastructure.
 
 Run `.venv/bin/python -m pytest` for the complete offline suite. Run
 `.venv/bin/python -m pytest tests/evals -m 'not live_ai'` for golden contracts.
-Live evaluation requires credentials, an allowed API destination and explicit opt-in:
+Paid live verification is intentionally deferred by project decision and is not required
+for normal CI, milestone completion or merge. `OPENAI_API_KEY` is optional for development.
+Track later-phase checks in the [project checklist](../evals/deferred-live-verification.md).
+Deferred or skipped live verification does not establish semantic quality.
+For that later authorized phase, live evaluation requires credentials, an allowed API
+destination and explicit opt-in:
 `RUN_LIVE_AI_EVALS=1 .venv/bin/python -m pytest tests/evals -m live_ai`.
 Normal tests do not make live calls even if credentials happen to exist.
 The ten fixtures cover solution requests, unsupported numbers, mixed problem/solution,
@@ -117,8 +122,9 @@ no durable persistence, deduplication, concurrency protection, context-size budg
 source fetching, application UI or automated knowledge acceptance. Full records may contain
 sensitive source text, so production retention/access policy is still required. `store=False`
 does not define the provider's full data retention policy. Model versions may drift;
-record metadata and rerun live evaluations when changing model or prompt version.
+record metadata and track model/prompt changes for reverification during the later
+authorized live phase.
 
-Milestone 3 remains deferred: validation execution/management, evidence-quality aggregation,
-readiness gates and any new lifecycle workflows. Deterministic prioritization/scoring and
-Milestones 4–7 are also not implemented.
+Milestone 3 evidence evaluation and validation are now implemented; see
+[evidence and validation](evidence-validation.md). Readiness gates, deterministic
+prioritization/scoring and Milestones 4–7 remain unimplemented.

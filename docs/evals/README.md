@@ -1,5 +1,13 @@
 # Discovery-analysis evaluations
 
+Paid live-model verification is intentionally deferred by project decision to a later
+final phase. Do not run live evaluations during current development. It is not required
+for normal CI, milestone completion or merge. `OPENAI_API_KEY` is optional for normal
+development; offline deterministic and AI contract/golden tests require no paid access.
+The [deferred verification checklist](deferred-live-verification.md) distinguishes the
+three layers and tracks all 18 existing live cases for later execution. Deferred or
+skipped live checks must never be represented as a live semantic pass.
+
 See [Milestone 2 architecture and evaluation commands](../architecture/discovery-analysis.md).
 
 Ten golden input/result fixtures live in `tests/fixtures/discovery_analysis.json`.
@@ -23,3 +31,4 @@ The [Milestone 3 live verification report](milestone-3-live-verification.md) rec
 actual dispatched GitHub runs. The latest run is infrastructure-blocked by HTTP 429 on
 all 18 cases; it does not establish live semantic quality. Safe adapter diagnostics now
 expose HTTP status and allowlisted codes without raw provider payloads.
+The unchanged live tests and manual workflow remain available for the later phase.

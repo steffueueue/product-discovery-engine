@@ -1,4 +1,21 @@
-# Milestone 3 live verification: infrastructure blocked
+# Milestone 3 live verification: intentionally deferred
+
+## Project decision
+
+On 2026-10-03, the project owner intentionally deferred paid OpenAI API calls to a
+later final live-verification phase. Live semantic verification is not required for
+normal CI, milestone completion or merging Milestone 3 or subsequent milestones.
+No further live evaluations are to run during current development.
+
+All **18 live evaluations** remain unchanged and available as explicitly opt-in
+verification for that later phase: ten structured discovery-analysis cases from
+Milestone 2 and eight Challenge Mode cases from Milestone 3. Their earlier attempts
+did not reach semantic assertions; the diagnostic rerun returned HTTP 429 for every
+case. No semantic conclusions can be drawn from these failed runs. Deferral, skipped
+tests and offline fixture passes must never be represented as a live semantic pass.
+Follow-up is tracked in the [project checklist](deferred-live-verification.md).
+
+## Attempt history
 
 Date: 2026-10-03. Starting branch: `feat/evidence-validation`; local and remote
 commit verified as `5adc79a11618cee77f2aac973dc5bd95959d4189` before dispatch.
@@ -30,8 +47,8 @@ Root-cause classification: **infrastructure**. There is no model output on which
 judge reasoning, prompt design or semantic evaluation failures. The diagnostics gap was
 an additional provider-integration issue and was fixed without changing product behavior.
 Repeated immediate reruns cannot establish semantic reliability while access is blocked.
-The account/project quota or rate-limit capacity behind the repository secret needs
-attention; no credential or billing change is made or fabricated by this task.
+Account/project rate or quota capacity will need to be checked when the project
+explicitly resumes paid live verification. No credential or billing change was made.
 
 ## Eight Challenge Mode cases
 
@@ -61,6 +78,13 @@ behavioral verification is claimed for any of the 18 cases.
 - Dependency check: no broken requirements.
 - Git whitespace checks: passed.
 
+The complete suite was rerun credential-free after documenting the project decision:
+**593 passed, 18 opt-in live tests skipped**. `OPENAI_API_KEY` and
+`DISCOVERY_ANALYSIS_MODEL` were removed and `RUN_LIVE_AI_EVALS=0` was set for every
+verification command. Ruff lint, formatting, strict mypy (`src tests examples`), wheel
+build, dependency and Git whitespace checks all passed again. No paid calls were made;
+the skipped live cases do not establish a semantic pass.
+
 ## Final Milestone 3 review
 
 The final review inspected the evidence/validation policy, application boundaries and
@@ -81,7 +105,8 @@ corresponding regression tests. No further material domain changes were warrante
 Remaining risks: live Challenge Mode semantics are unverified; golden checks are bounded
 contracts, not a general reliability certificate; accountable reviewer input and correct
 canonical origin identity remain necessary; storage transactions, authorization and
-concurrent writes are not implemented. The PR should remain draft while live access is
-blocked. Once access is restored, dispatch the same workflow on the feature branch and
+concurrent writes are not implemented. These risks remain documented; the project decision
+allows Milestone 3 completion and merge after credential-free verification. In the later
+authorized live phase, use the existing workflow on the then-current reviewed commit and
 assess all 18 results without relaxing tests. Documentation-only commits after `23de6d1`
 do not change the evaluated implementation.

@@ -9,6 +9,13 @@ This Python modular monolith accepts immutable submissions and returns structure
 reviewable AI interpretation through replaceable providers, plus deterministic evidence
 assessment and audited validation records. Offline tests need no API
 key. Live analysis requires explicitly configured OpenAI credentials and model.
+`OPENAI_API_KEY` is optional for normal development; normal pytest and CI require no
+paid API access. Paid live-model verification is intentionally deferred to a later final
+phase by project decision and is not required for milestone completion or merge.
+The 18 existing live evaluations remain explicitly opt-in. See the
+[deferred verification checklist](docs/evals/deferred-live-verification.md) and
+[previous attempt report](docs/evals/milestone-3-live-verification.md).
+Deferred or skipped live checks must never be reported as a semantic pass.
 Discovery Priority, Delivery Readiness, Discovery Gate, delivery selection, specification
 generation and outcome measurement are deferred.
 See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
@@ -20,7 +27,7 @@ Requires Python 3.12 or newer. From the repository root:
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[dev]'
-.venv/bin/python -m pytest
+env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
 .venv/bin/ruff check .
 .venv/bin/ruff format --check .
 .venv/bin/mypy src tests

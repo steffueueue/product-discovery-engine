@@ -1,5 +1,15 @@
 # Discovery-analysis evaluations
 
+Paid live-model verification is intentionally deferred by project decision. Do not run
+live evaluations during current development. `OPENAI_API_KEY` is optional for normal
+development; normal pytest/CI and milestone completion require no paid API access.
+Offline deterministic tests and offline AI contract/golden tests remain required.
+All 18 live tests remain unchanged and opt-in for the later final verification phase.
+See the [project checklist](../../docs/evals/deferred-live-verification.md) and
+[attempt report](../../docs/evals/milestone-3-live-verification.md). HTTP 429 prevented
+previous attempts from reaching semantic assertions; deferral, skipped execution and
+offline fixture passes must never be reported as a live semantic pass.
+
 See [Milestone 2 architecture and evaluation commands](../../docs/architecture/discovery-analysis.md).
 
 Ten golden input/result fixtures live in `tests/fixtures/discovery_analysis.json`.

@@ -68,7 +68,8 @@ Baseline: fetched `origin/main`, switched to local `main`, verified exact commit
     concurrent writes are not assessed. No new workflow was added to conceal these limitations.
 16. **Deferred:** Discovery Priority, Delivery Readiness and Discovery Gate (Milestone 4),
     plus portfolio prioritization, selection/delivery, spec generation, delivery gates,
-    implementation records and outcome measurement. No PR creation or merge is part of this task.
+    implementation records and outcome measurement. The initial implementation review
+    preceded PR creation and merge.
 
 ## Critical self-review
 
@@ -142,3 +143,13 @@ live suites failed before model output; the rerun confirms HTTP 429 on every cas
 [the live verification report](../evals/milestone-3-live-verification.md) for run links,
 root-cause classification, all eight case assessments, complete checks and the final review.
 Live semantic behavior remains unverified; no evaluation was weakened.
+
+## Project decision on completion
+
+On 2026-10-03 the project owner deferred paid live-model verification to a later final
+phase. It is not a blocker for normal CI, milestone completion or merge. Milestone 3 is
+complete on the basis of credential-free offline verification; this does not claim a
+live semantic pass. All 18 live tests and the existing opt-in workflow remain unchanged.
+The [project checklist](../evals/deferred-live-verification.md) tracks ten Milestone 2
+discovery-analysis cases, eight Milestone 3 Challenge Mode cases and justified future
+checks. No further paid calls are to run during current development.

@@ -251,6 +251,10 @@ flag and needs no credentials. The existing manual `live-ai-evals.yml` already r
 `tests/evals` live-marked cases, including the new Challenge Mode cases; there is no
 second workflow. Live model choice and API key remain secret/environment configuration.
 The new adapter is tested with fake Responses calls and no real key.
+Paid live verification is intentionally deferred by project decision to a later final
+phase and is not required for milestone completion or merge. The 18 live tests remain
+unchanged and opt-in; their HTTP 429 attempt results do not establish semantic quality.
+See the [project checklist](../evals/deferred-live-verification.md) for later execution.
 
 Known risks: imperfect reviewer basis and origin identity; conservative source-overlap
 merging; manual dependency completion attestations; no storage, scheduling, authorization,
