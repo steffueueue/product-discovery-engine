@@ -1,6 +1,6 @@
 # Product specification v0.1
 
-Status: source of truth for Milestones 0–2.
+Status: source of truth for Milestones 0–3.
 
 The following requirements preserve the founding product brief. Implementation details
 and provisional lifecycle semantics are recorded in ADR 0001. Amend this document
@@ -626,3 +626,41 @@ above. It introduces reviewable analysis only; Milestones 3–7 remain deferred.
   analysis records. No persistence or automatic knowledge/lifecycle acceptance is added.
 - Offline evaluation contracts and optional live evaluations cover the ten Milestone 2
   scenarios. Passing schema tests does not establish semantic reliability or factual truth.
+
+
+## Milestone 3 evidence-and-validation contract
+
+Milestone 3 is authorized independently of the historical scope statements above.
+Milestone 4 and later workflows remain deferred. The implementation contract and initial
+rubric are detailed in [evidence and validation](../architecture/evidence-validation.md)
+and [ADR 0003](../decisions/0003-evidence-validation.md).
+
+- Evaluate directness, reliability, coverage, recency and independence using explicit
+  ordinal policy; preserve rationale, target, policy version, timestamp and audit.
+  Quantity never supplies a quality bonus. Unknown inputs remain unknown.
+- Bind every assessment to an explicit claim/assumption, target and population.
+  Existence observations never establish frequency, reach, economic impact, causality
+  or solution suitability. Nonrepresentative population claims stay low in coverage.
+- Preserve CURRENT, REVIEW_DUE, STALE and INVALIDATED with configured review intervals,
+  applicability/review metadata, reasons and immutable history. Age does not make a
+  historical observation false. Preserve the existing Milestone 1 freshness API.
+- Record underlying origins; group shared-family and overlapping provenance transitively.
+  Count meaningful independent source/method diversity separately from quality.
+  Both support and contradiction remain visible; mixed evidence has no forced winner.
+- Assess assumption risk from decision impact and unresolved uncertainty through a
+  versioned ordinal matrix, preserving both evidence directions and explicit gaps.
+- Store owned validation activities with constrained methods, inputs, predefined
+  success/failure criteria, ordinal information gain, cost/speed, dependencies and
+  explicit PLANNED → READY → RUNNING → COMPLETED lifecycle plus cancellation.
+  Reject invalid transitions; audit creation, start, completion and cancellation.
+- Results are SUPPORTED, PARTIALLY_SUPPORTED, INCONCLUSIVE or CONTRADICTED, generating
+  new evidence without overwriting history. Retain refuted assumptions. Preserve old/new
+  criteria and actor/reason/version audits, explicitly identifying post-hoc changes.
+- Challenge Mode is structured, AI-labeled advisory interpretation searching for
+  disconfirmation, biases, alternatives and overlooked risks. Keep input/output,
+  provider/model/prompt provenance and completion audit. AI never determines quality,
+  freshness, triangulation, accepted evidence, validation lifecycle or final decisions.
+- Configuration is validated independently of prompts. Offline unit/evaluation tests
+  need no credentials; live evaluations extend the existing opt-in workflow.
+- Discovery Priority, Delivery Readiness, Discovery Gate, portfolio prioritization,
+  selection/delivery, spec generation, implementation and outcomes remain unimplemented.

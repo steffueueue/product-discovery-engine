@@ -34,3 +34,12 @@ before implementing readiness or prioritization. AI integration is a separate la
 Structured review proposals, provider protocol, source/strategy checks and an isolated
 OpenAI Responses adapter are now implemented. See [discovery analysis](discovery-analysis.md)
 and [ADR 0002](../decisions/0002-discovery-analysis.md). The domain remains unchanged.
+
+
+## Milestone 3
+
+Deterministic evidence/validation domain policies and snapshots, knowledge assembly,
+and a separate structured Challenge Mode provider are implemented. See
+[evidence and validation](evidence-validation.md) and
+[ADR 0003](../decisions/0003-evidence-validation.md). Persistence and Milestone 4 gates
+remain deferred; domain models import no provider SDK or I/O dependencies.

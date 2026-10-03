@@ -21,6 +21,20 @@ class EvidenceTarget(StrEnum):
     OUTCOME = "outcome"
     SOLUTION = "solution"
     ASSUMPTION = "assumption"
+    PROBLEM_EXISTENCE = "problem_existence"
+    TARGET_SEGMENT = "target_segment"
+    FREQUENCY = "frequency"
+    SEVERITY = "severity"
+    REACH = "reach"
+    DESIRABILITY = "desirability"
+    USER_VALUE = "user_value"
+    BEHAVIOR = "behavior"
+    USABILITY = "usability"
+    FEASIBILITY = "feasibility"
+    VIABILITY = "viability"
+    ECONOMICS = "economics"
+    BUSINESS_IMPACT = "business_impact"
+    CAUSAL_MECHANISM = "causal_mechanism"
 
 
 class Freshness(StrEnum):
@@ -50,6 +64,10 @@ class Evidence(DomainModel):
     collected_on: date
     target: EvidenceTarget
     target_assumption_id: UUID | None = None
+    target_claim_id: UUID | None = None
+    population: Text | None = None
+    valid_from: date | None = None
+    review_after: date | None = None
     direction: EvidenceDirection
     methodology_notes: Text | None
     provenance: Provenance
@@ -67,6 +85,10 @@ class Evidence(DomainModel):
             raise ValueError("assumption target requires exactly one assumption reference")
         if (self.invalidated_on is None) != (self.invalidation_reason is None):
             raise ValueError("invalidation requires date and reason")
+        if self.review_after is not None and self.review_after < (
+            self.valid_from or self.collected_on
+        ):
+            raise ValueError("review_after cannot precede validity/collection")
         for value in (self.reviewed_on, self.invalidated_on):
             if value is not None and value < self.collected_on:
                 raise ValueError("review/invalidation cannot precede collection")

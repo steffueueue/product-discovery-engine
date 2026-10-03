@@ -4,11 +4,13 @@ Evidence-driven foundations for accountable product decisions, from original sig
 through hypothesis validation and eventual measured outcomes. Prefer transparent
 incompleteness over fabricated certainty.
 
-**Implemented: Milestones 0–2 (repository, domain foundation, discovery analysis).**
+**Implemented: Milestones 0–3 (repository, domain, discovery analysis, evidence and validation).**
 This Python modular monolith accepts immutable submissions and returns structured,
-reviewable AI interpretation through a replaceable provider. Offline tests need no API
+reviewable AI interpretation through replaceable providers, plus deterministic evidence
+assessment and audited validation records. Offline tests need no API
 key. Live analysis requires explicitly configured OpenAI credentials and model.
-Scoring, delivery selection, specification generation and outcome measurement are deferred.
+Discovery Priority, Delivery Readiness, Discovery Gate, delivery selection, specification
+generation and outcome measurement are deferred.
 See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
 
 ## Development
@@ -55,3 +57,19 @@ Read the [product source of truth](docs/product-specs/discovery-prioritization-s
 For the current risks, read the [domain review](docs/architecture/milestone-0-1-domain-review.md).
 `config/policies.example.toml` is explicitly illustrative; no scoring/gate implementation
 or production strategy is configured. Tests use in-memory objects and deterministic clocks.
+
+
+## Milestone 3: evidence and validation
+
+The deterministic layer now assesses claim-scoped quality/freshness, underlying-source
+independence, triangulation and assumption risk. Validation activities preserve
+predefined criteria, explicit lifecycle and append-only results/audits. Challenge Mode
+is a separate structured advisory capability with disconfirmation and provenance guards.
+See [the architecture and end-to-end example](docs/architecture/evidence-validation.md).
+
+```sh
+RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
+.venv/bin/python examples/evidence_validation.py
+```
+
+No Discovery Priority, Delivery Readiness, Discovery Gate or final decision is implemented.

@@ -1,0 +1,110 @@
+version = "evidence-validation-v1"
+
+[quality]
+version = "quality-v1"
+aggregation = "weakest_dimension"
+population_sample_cap = "low"
+
+[quality.directness]
+belief = "very_low"
+indirect_proxy = "low"
+reported_experience = "medium"
+direct_observation = "high"
+direct_measurement = "very_high"
+
+[quality.reliability]
+known_major_errors = "very_low"
+undocumented_method = "low"
+documented_limitations = "medium"
+reviewed_method = "high"
+rigorous_checked_method = "very_high"
+
+[quality.coverage]
+single_account = "very_low"
+convenience_sample = "low"
+bounded_sample = "medium"
+representative_segment = "high"
+representative_population = "very_high"
+
+[quality.recency]
+current = "very_high"
+review_due = "medium"
+stale = "low"
+invalidated = "very_low"
+
+[quality.independence]
+unknown = "very_low"
+shared_family = "low"
+traceable_origin = "medium"
+distinct_family = "high"
+
+[freshness]
+version = "freshness-v1"
+[freshness.default]
+context = "default"
+automatic_staleness = true
+[freshness.default.thresholds]
+version = 1
+review_after_days = 90
+stale_after_days = 365
+
+[[freshness.contexts]]
+context = "historical"
+automatic_staleness = false
+[freshness.contexts.thresholds]
+version = 1
+review_after_days = 180
+stale_after_days = 730
+
+[triangulation]
+version = "triangulation-v1"
+minimum_independent_groups = 3
+minimum_distinct_methods = 3
+
+[assumption_risk]
+version = "assumption-risk-v1"
+
+[[assumption_risk.matrix]]
+decision_impact = "very_low"
+[assumption_risk.matrix.by_uncertainty]
+very_low = "very_low"
+low = "very_low"
+medium = "very_low"
+high = "low"
+very_high = "low"
+
+[[assumption_risk.matrix]]
+decision_impact = "low"
+[assumption_risk.matrix.by_uncertainty]
+very_low = "very_low"
+low = "low"
+medium = "low"
+high = "medium"
+very_high = "medium"
+
+[[assumption_risk.matrix]]
+decision_impact = "medium"
+[assumption_risk.matrix.by_uncertainty]
+very_low = "very_low"
+low = "low"
+medium = "medium"
+high = "high"
+very_high = "high"
+
+[[assumption_risk.matrix]]
+decision_impact = "high"
+[assumption_risk.matrix.by_uncertainty]
+very_low = "low"
+low = "medium"
+medium = "high"
+high = "high"
+very_high = "very_high"
+
+[[assumption_risk.matrix]]
+decision_impact = "very_high"
+[assumption_risk.matrix.by_uncertainty]
+very_low = "low"
+low = "medium"
+medium = "high"
+high = "very_high"
+very_high = "very_high"
