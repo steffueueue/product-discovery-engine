@@ -1,6 +1,6 @@
 # Product specification v0.1
 
-Status: source of truth for Milestones 0–1.
+Status: source of truth for Milestones 0–2.
 
 The following requirements preserve the founding product brief. Implementation details
 and provisional lifecycle semantics are recorded in ADR 0001. Amend this document
@@ -594,3 +594,35 @@ appear in that hypothesis's assumption references; object existence is checked l
 Reconstruction requires retention of full before/after snapshots with their audit events,
 plus referenced source history. Audit field names and version numbers alone do not
 preserve material values and are not a complete event-sourcing design.
+
+
+## Milestone 2 discovery-analysis contract
+
+Milestone 2 is now authorized independently of the historical Milestone 0–1 scope
+above. It introduces reviewable analysis only; Milestones 3–7 remain deferred.
+
+- Preserve immutable original submissions. Separate intake type, underlying problem,
+  segment, desired outcome, solution hypothesis and expected behavior change.
+- Structure FACT, EVIDENCE, ASSUMPTION, INFERENCE and UNKNOWN separately, using the
+  existing domain taxonomy. Missing context remains explicitly unknown.
+- All AI interpretations are labeled agent-generated. Assumptions include category,
+  rationale, importance, qualitative uncertainty and decision relevance.
+- Facts may only preserve supplied existing FACT claims; evidence may only preserve
+  supplied, non-invalidated domain Evidence statements. Never promote a submission
+  assertion or an evidence item into FACT. Free-text metrics remain unverified proposals.
+  Existing source classifications are caller assertions, not truth certification.
+- Every citation identifies an input source and an exact excerpt. Preserve competing
+  explanations and contradictory signals rather than forcing causal conclusions.
+- Strategic fit uses explicit versioned strategy only. Missing/unknown strategy returns
+  insufficient_strategy_context. Preliminary qualitative alignment has no scoring model.
+- Recommend the assumption whose invalidation most affects the decision, considering
+  impact and unresolved uncertainty. Recommend the cheapest credible validation with
+  required data, success/failure signals, relative cost/speed and cheaper alternatives.
+- Application-consumed AI output must validate against composable Pydantic models.
+  Domain logic remains authoritative for lifecycle, gates, scoring and audit mutations.
+- The application depends on a provider protocol. OpenAI SDK/configuration is isolated
+  in infrastructure. Prompts are versioned interpretation instructions, not business policy.
+- Retain analysis input, result, timestamp and provider/model/prompt metadata when saving
+  analysis records. No persistence or automatic knowledge/lifecycle acceptance is added.
+- Offline evaluation contracts and optional live evaluations cover the ten Milestone 2
+  scenarios. Passing schema tests does not establish semantic reliability or factual truth.
