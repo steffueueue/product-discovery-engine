@@ -1,0 +1,27 @@
+# Illustrative policy only. These thresholds are not endorsed business defaults.
+# Callers explicitly supply the policy to freshness evaluation.
+[strategy.reference]
+id = "unconfigured-strategy"
+version = 1
+[strategy.objective]
+reason = "Product strategy has not been provided"
+
+[evidence]
+version = 1
+review_after_days = 30
+stale_after_days = 90
+
+[scoring]
+version = 1
+configured = false
+reason = "Scoring is deferred beyond Milestone 1"
+
+[lifecycle_gates]
+version = 1
+configured = false
+reason = "Readiness gates need approved product requirements"
+
+[delivery_gates]
+version = 1
+configured = false
+reason = "Delivery selection gates are deferred"
