@@ -20,6 +20,7 @@ from product_discovery_engine.application.discovery_analysis import (
 )
 
 from .openai_analysis import OpenAIAnalysisConfig
+from .openai_errors import safe_api_failure
 
 
 class OpenAIChallengeProvider:
@@ -50,5 +51,7 @@ class OpenAIChallengeProvider:
             return ChallengeAnalysis.model_validate(response.output_parsed)
         except ValidationError:
             raise InvalidAnalysis("Provider returned invalid structured challenge output") from None
-        except APIError:
-            raise ProviderUnavailable("OpenAI challenge request failed") from None
+        except APIError as error:
+            raise ProviderUnavailable(
+                f"OpenAI challenge request failed ({safe_api_failure(error)})"
+            ) from None

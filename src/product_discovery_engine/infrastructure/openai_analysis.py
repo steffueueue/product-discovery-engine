@@ -19,6 +19,8 @@ from product_discovery_engine.application.discovery_analysis import (
 )
 from product_discovery_engine.domain.common import Text
 
+from .openai_errors import safe_api_failure
+
 
 class OpenAIAnalysisConfig(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
@@ -59,5 +61,7 @@ class OpenAIAnalysisProvider:
             return DiscoveryAnalysis.model_validate(response.output_parsed)
         except ValidationError:
             raise InvalidAnalysis("Provider returned invalid structured output") from None
-        except APIError:
-            raise ProviderUnavailable("OpenAI analysis request failed") from None
+        except APIError as error:
+            raise ProviderUnavailable(
+                f"OpenAI analysis request failed ({safe_api_failure(error)})"
+            ) from None
