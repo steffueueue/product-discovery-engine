@@ -1,4 +1,4 @@
-"""Explicit conservative transition graph; readiness gates are deferred."""
+"""Explicit stage graph; candidacy requires the separate audited discovery gate operation."""
 
 from collections.abc import Mapping
 from enum import StrEnum
@@ -63,5 +63,7 @@ class InvalidTransition(ValueError):
 def require_transition(current: HypothesisStatus, target: HypothesisStatus) -> None:
     if not isinstance(current, HypothesisStatus) or not isinstance(target, HypothesisStatus):
         raise InvalidTransition("lifecycle states must be HypothesisStatus values")
+    if target == HypothesisStatus.CANDIDATE_FOR_DELIVERY_PRIORITIZATION:
+        raise InvalidTransition("invalid hypothesis transition: candidacy requires Discovery Gate")
     if target not in ALLOWED_TRANSITIONS[current]:
         raise InvalidTransition(f"invalid hypothesis transition: {current.value} -> {target.value}")

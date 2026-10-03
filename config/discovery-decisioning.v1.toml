@@ -1,0 +1,102 @@
+version = "discovery-decisioning.v1"
+
+[priority]
+version = "discovery-decisioning.v1"
+resolved_uncertainty_at_most = "low"
+suppress_active_validation = true
+
+[[priority.rules]]
+minimum_impact = "very_high"
+minimum_uncertainty = "high"
+category = "critical"
+[[priority.rules]]
+minimum_impact = "high"
+minimum_uncertainty = "medium"
+category = "high"
+[[priority.rules]]
+minimum_impact = "medium"
+minimum_uncertainty = "medium"
+category = "medium"
+[[priority.rules]]
+minimum_impact = "very_low"
+minimum_uncertainty = "very_low"
+category = "low"
+
+[readiness]
+version = "discovery-decisioning.v1"
+required_dimensions = ["problem_evidence", "target_segment", "outcome_clarity", "evidence_quality", "evidence_freshness", "triangulation", "assumption_risk", "contradictions", "validation", "challenge", "ownership", "strategy", "solution_effectiveness"]
+critical_impact = "high"
+critical_uncertainty = "high"
+require_completed_critical_validation = true
+require_current_validation_evidence = true
+serious_challenge_at_least = "high"
+allow_human_assumption_treatment = true
+allow_accepted_contradictions = true
+review_due_requires_review = true
+challenge_requires_human_review = true
+strategy_requires_human_acknowledgement = true
+
+[[readiness.evidence_requirements]]
+dimension = "problem_evidence"
+target = "problem_existence"
+minimum_quality = "medium"
+acceptable_freshness = ["current", "review_due"]
+minimum_independent_groups = 2
+minimum_distinct_methods = 2
+solution_only = false
+[[readiness.evidence_requirements]]
+dimension = "target_segment"
+target = "target_segment"
+minimum_quality = "medium"
+acceptable_freshness = ["current", "review_due"]
+minimum_independent_groups = 1
+minimum_distinct_methods = 1
+solution_only = false
+[[readiness.evidence_requirements]]
+dimension = "reach"
+target = "reach"
+minimum_quality = "medium"
+acceptable_freshness = ["current"]
+minimum_independent_groups = 2
+minimum_distinct_methods = 2
+solution_only = false
+[[readiness.evidence_requirements]]
+dimension = "viability"
+target = "viability"
+minimum_quality = "medium"
+acceptable_freshness = ["current"]
+minimum_independent_groups = 2
+minimum_distinct_methods = 2
+solution_only = false
+[[readiness.evidence_requirements]]
+dimension = "causal_mechanism"
+target = "causal_mechanism"
+minimum_quality = "medium"
+acceptable_freshness = ["current"]
+minimum_independent_groups = 2
+minimum_distinct_methods = 2
+solution_only = false
+[[readiness.evidence_requirements]]
+dimension = "business_impact"
+target = "business_impact"
+minimum_quality = "medium"
+acceptable_freshness = ["current"]
+minimum_independent_groups = 2
+minimum_distinct_methods = 2
+solution_only = false
+[[readiness.evidence_requirements]]
+dimension = "solution_effectiveness"
+target = "solution"
+minimum_quality = "medium"
+acceptable_freshness = ["current", "review_due"]
+minimum_independent_groups = 2
+minimum_distinct_methods = 2
+solution_only = true
+
+[gate]
+version = "discovery-decisioning.v1"
+required_readiness = "ready"
+required_conditions = ["readiness", "evidence_targets", "ownership", "freshness", "quality", "triangulation", "critical_assumptions", "validation", "challenge", "strategy", "contradictions"]
+maximum_age_hours = 24
+# Only known review concerns may be overridden; technical/unknown conditions never can.
+overridable_conditions = ["readiness", "challenge", "contradictions"]

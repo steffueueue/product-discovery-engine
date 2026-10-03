@@ -49,7 +49,7 @@ class TriangulationAssessment(DomainModel):
             or len(group_ids) != len(set(group_ids))
             or set(group_ids) != active_ids
             or self.independent_source_group_count != len(independent)
-            or self.independent_method_diversity != _independent_method_count(independent)
+            or self.independent_method_diversity != independent_method_count(independent)
             or self.methods != tuple(sorted({m for g in independent for m in g.methods}, key=str))
             or self.policy_version != self.policy.version
         ):
@@ -73,7 +73,7 @@ class TriangulationAssessment(DomainModel):
         return self
 
 
-def _independent_method_count(groups: tuple[SourceGroup, ...]) -> int:
+def independent_method_count(groups: tuple[SourceGroup, ...]) -> int:
     """Maximum matching: each distinct method must come from a distinct source group."""
     matched: dict[ValidationMethod, int] = {}
 
@@ -134,7 +134,7 @@ def triangulate(
     supporting = tuple(g for g in groups if supports.intersection(g.evidence_ids))
     contradicting = tuple(g for g in groups if contradicts.intersection(g.evidence_ids))
     independent = tuple(g for g in groups if g.traceable)
-    diversity = _independent_method_count(independent)
+    diversity = independent_method_count(independent)
     methods = tuple(sorted({m for g in independent for m in g.methods}, key=str))
     category = _category(
         active_ids=bool(active),

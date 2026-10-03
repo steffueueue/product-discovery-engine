@@ -1,6 +1,6 @@
 # Product specification v0.1
 
-Status: source of truth for Milestones 0–3.
+Status: source of truth for Milestones 0–4.
 
 The following requirements preserve the founding product brief. Implementation details
 and provisional lifecycle semantics are recorded in ADR 0001. Amend this document
@@ -664,3 +664,84 @@ and [ADR 0003](../decisions/0003-evidence-validation.md).
   need no credentials; live evaluations extend the existing opt-in workflow.
 - Discovery Priority, Delivery Readiness, Discovery Gate, portfolio prioritization,
   selection/delivery, spec generation, implementation and outcomes remain unimplemented.
+
+
+## Milestone 4 – Discovery Decisioning contract
+
+Milestone 4 is authorized independently of the historical Milestone 0–3 scope statements
+above. This contract supersedes their Milestone 4 deferral; their historical contracts
+remain intact. Milestone 5 and later workflows remain deferred. See
+[discovery decisioning](../architecture/discovery-decisioning.md) and
+[ADR 0004](../decisions/0004-discovery-decisioning.md) for implemented semantics.
+
+- **Discovery Priority** asks what to learn next. Use explicit monotonic ordinal
+  impact/uncertainty rules, preserving assumption-risk, gaps, contradictions, freshness,
+  validation, gain, cost, speed and dependencies. Do not rank initiatives or compute one
+  numeric product score. Critical expensive learning is not demoted by cost. Preserve
+  within-category ties; unknown targets are outside ordinal ordering. Grouping is limited
+  to one hypothesis snapshot/policy. Incomplete linked validation context is explicit.
+- Monitor active validation instead of proposing duplicate tests. Keep blocked learning
+  visible. Inconclusive learning remains open; refutation/contradiction may require
+  reframing rather than confirmation seeking. Missing values never become optimistic defaults.
+- **Delivery Readiness** separately assesses knowledge maturity with UNKNOWN, INSUFFICIENT,
+  PARTIAL, SUFFICIENT and NOT_APPLICABLE dimensions, resulting in NOT_READY, NEEDS_REVIEW
+  or READY. Required unknown/insufficient dimensions block; required partials require review.
+- Preserve exact evidence target, claim/assumption and population boundaries. Problem
+  existence cannot imply reach, viability, causal mechanism, business impact or solution
+  effectiveness. Required quality/freshness/independence are policy-driven. Count gives no
+  quality bonus; same-origin reports do not establish independent triangulation. Filtering
+  old/weak evidence cannot erase known source overlap. Historical evidence remains visible.
+- V1 requires problem/segment support, outcome clarity, quality/freshness/triangulation,
+  assumption/contradiction/validation review, Challenge Mode, owner and explicit strategy.
+  Reach, viability, causal mechanism and business impact are separately evaluated optional
+  targets. Solution effectiveness applies only when a solution exists; absence is
+  NOT_APPLICABLE, while an unknown solution remains UNKNOWN.
+- Unresolved high-impact/high-uncertainty or high-impact refuted assumptions need resolution
+  or explicit configured human treatment tied to the exact retained risk assessment.
+  Low-impact uncertainty need not block. Critical assumptions require defensible completed
+  validation when configured; explicitly required activities preserve criteria-bound results.
+  Invalidated validation dependencies cannot satisfy readiness; v1 requires current dependencies.
+- Contradictions remain visible with explicit human classification: healthy mixed evidence
+  requires review, unresolved material/critical-invalidating contradiction blocks, and
+  investigated acceptance may satisfy configured conditions. No supporting majority wins.
+- Challenge Mode remains advisory. Application orchestration checks its actual retained
+  record against current scoped knowledge and problem statement. Required human review
+  independently records severity/disposition for every item. AI severity does not determine
+  readiness. Serious unresolved human-reviewed challenges block, unknown human severity
+  blocks, and reviewed acceptance/addressing remains explicit.
+- Strategy requires actual versioned configuration and a known objective, with explicit
+  human acknowledgement where configured. A reference alone or
+  `insufficient_strategy_context` never passes. No AI alignment substitutes for this review.
+- **Discovery Gate** evaluates configured conditions as PASSED, FAILED, UNKNOWN or
+  REVIEW_REQUIRED and returns PASSED, BLOCKED or NEEDS_REVIEW with explicit reasons.
+  Missing readiness and any unknown required condition prevent ordinary PASS. Retain
+  full hypothesis/readiness/policy snapshots, references, version, time and conditions.
+- Gate invariants require the exact material hypothesis, complete current policy,
+  applicable assessment, and an `evidence_updated` source lifecycle state. V1 gates expire
+  within 24 hours from readiness and before the next UTC day. Outdated/mismatched policies,
+  stale gates, different hypotheses and newer material versions cannot authorize promotion.
+- Normal candidacy movement uses the explicit application promotion operation, consuming
+  current hypothesis, ordinary gate PASS, active policy, human actor and timestamp. Retain
+  before/after snapshots and separate lifecycle/decision audits. Generic ordinary status
+  transitions and deserialization cannot bypass the gate. Promotion increments version
+  and stops at `candidate_for_delivery_prioritization`.
+- Human override is a separate retained record with actor/ownership, reason, timestamp,
+  original gate/result, policy, explicitly overridden conditions, candidacy action and audit.
+  It never changes the original gate to PASSED. V1 permits only known readiness/challenge/
+  contradiction concerns; unknowns, technical prerequisites and expired gates cannot be
+  bypassed. Override promotion explicitly consumes the record and uses its human actor.
+- Validate the versioned TOML bundle independently of AI: reject unknown dimensions,
+  invalid ordinals/targets, duplicate/incomplete rules, impossible method/freshness
+  requirements, missing versions and inconsistent gate/readiness configuration.
+- Audit every priority/readiness assessment, gate evaluation/outcome, override and candidacy
+  promotion. Results are immutable, recomputable snapshots. Retain source/knowledge,
+  validation and actual advisory records alongside references; no persistence is supplied.
+- Current-state checks after external evidence invalidation, validation or review changes
+  remain caller responsibilities until an atomic persistence boundary exists. A snapshot
+  and expiry check cannot discover changes withheld from the operation.
+- All Milestone 4 execution and verification is credential-free. Add no AI decision agent
+  or new live-model behavior/tests; keep existing 18 opt-in live evaluations unchanged and
+  intentionally deferred. No paid API call is authorized by this milestone.
+- A gate pass is not a build recommendation. Portfolio ranking, ROI/RICE/WSJF, automatic
+  `selected_for_delivery`, DeliverySpec/spec drafting/clarification/completeness, Delivery
+  Gate, implementation/outcomes, deployment UI and persistence backend remain deferred.

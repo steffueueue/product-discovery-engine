@@ -4,7 +4,7 @@ Evidence-driven foundations for accountable product decisions, from original sig
 through hypothesis validation and eventual measured outcomes. Prefer transparent
 incompleteness over fabricated certainty.
 
-**Implemented: Milestones 0–3 (repository, domain, discovery analysis, evidence and validation).**
+**Implemented: Milestones 0–4 (through deterministic discovery decisioning).**
 This Python modular monolith accepts immutable submissions and returns structured,
 reviewable AI interpretation through replaceable providers, plus deterministic evidence
 assessment and audited validation records. Offline tests need no API
@@ -16,8 +16,8 @@ The 18 existing live evaluations remain explicitly opt-in. See the
 [deferred verification checklist](docs/evals/deferred-live-verification.md) and
 [previous attempt report](docs/evals/milestone-3-live-verification.md).
 Deferred or skipped live checks must never be reported as a semantic pass.
-Discovery Priority, Delivery Readiness, Discovery Gate, delivery selection, specification
-generation and outcome measurement are deferred.
+Discovery Priority, Delivery Readiness and Discovery Gate are implemented separately.
+Delivery selection, portfolio ranking, specification generation and outcomes remain deferred.
 See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
 
 ## Development
@@ -79,4 +79,23 @@ RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
 .venv/bin/python examples/evidence_validation.py
 ```
 
-No Discovery Priority, Delivery Readiness, Discovery Gate or final decision is implemented.
+Milestone 3 supplies knowledge inputs to the separate Milestone 4 decisioning layer.
+
+
+## Milestone 4: discovery decisioning
+
+Deterministic learning priority, qualitative delivery readiness and an audited Discovery
+Gate are separate policies in `config/discovery-decisioning.v1.toml`. Unknowns, evidence
+targets, independent sources, freshness and human review remain explicit. Candidacy now
+requires a current gate pass through the dedicated human promotion operation; ordinary
+status transitions cannot bypass it. Overrides are separate, narrowly configured audits.
+
+```sh
+.venv/bin/python examples/discovery_decisioning.py
+```
+
+The offline synthetic learning loop initially blocks, incorporates validation and human
+review, then stops at `candidate_for_delivery_prioritization`. No build recommendation
+or delivery selection follows. Read the [architecture, policy tables and limits](docs/architecture/discovery-decisioning.md),
+[ADR](docs/decisions/0004-discovery-decisioning.md) and
+[verification report](docs/architecture/milestone-4-review.md).

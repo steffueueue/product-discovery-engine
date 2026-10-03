@@ -66,6 +66,14 @@ class EventType(StrEnum):
     VALIDATION_CRITERIA_CHANGED = "validation_criteria_changed"
     ASSUMPTION_RISK_REASSESSED = "assumption_risk_reassessed"
     CHALLENGE_COMPLETED = "challenge_completed"
+    DISCOVERY_PRIORITY_ASSESSED = "discovery_priority_assessed"
+    DELIVERY_READINESS_ASSESSED = "delivery_readiness_assessed"
+    DISCOVERY_GATE_EVALUATED = "discovery_gate_evaluated"
+    DISCOVERY_GATE_PASSED = "discovery_gate_passed"
+    DISCOVERY_GATE_BLOCKED = "discovery_gate_blocked"
+    DISCOVERY_GATE_REVIEW_REQUIRED = "discovery_gate_review_required"
+    DISCOVERY_GATE_OVERRIDDEN = "discovery_gate_overridden"
+    HYPOTHESIS_PROMOTED = "hypothesis_promoted_to_candidate"
 
 
 class AuditMetadata(DomainModel):
@@ -95,7 +103,7 @@ class AuditEvent(DomainModel):
 
     @model_validator(mode="after")
     def validate_override(self) -> "AuditEvent":
-        if self.event_type == EventType.HUMAN_OVERRIDE:
+        if self.event_type in {EventType.HUMAN_OVERRIDE, EventType.DISCOVERY_GATE_OVERRIDDEN}:
             if self.actor.kind != ActorKind.HUMAN or self.metadata.reason is None:
                 raise ValueError("human override requires a human actor and a reason")
         return self

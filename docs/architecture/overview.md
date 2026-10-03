@@ -43,3 +43,14 @@ and a separate structured Challenge Mode provider are implemented. See
 [evidence and validation](evidence-validation.md) and
 [ADR 0003](../decisions/0003-evidence-validation.md). Persistence and Milestone 4 gates
 remain deferred; domain models import no provider SDK or I/O dependencies.
+
+
+## Milestone 4
+
+Three separate deterministic policies now own learning priority, knowledge readiness and
+discovery gating. Human promotion consumes immutable gate/current-policy/current-snapshot
+inputs and stops at delivery candidacy. Generic status changes cannot bypass the gate.
+Domain knowledge packets translate and reconstruct Milestone 3 evidence; Challenge Mode
+remains advisory with explicit human review. See [discovery decisioning](discovery-decisioning.md)
+and [ADR 0004](../decisions/0004-discovery-decisioning.md). Milestone 4 deferrals in earlier
+sections describe those historical milestones. Persistence and Milestone 5+ remain deferred.
