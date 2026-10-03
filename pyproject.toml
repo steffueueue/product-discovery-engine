@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Evidence-driven foundations for accountable product decisions"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["pydantic>=2.10,<3"]
+dependencies = ["pydantic>=2.10,<3", "openai>=2.54,<3"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "ruff>=0.11,<1", "mypy>=1.15,<2"]
@@ -19,6 +19,7 @@ packages = ["src/product_discovery_engine"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers"
+markers = ["live_ai: explicitly opted-in live model evaluations"]
 
 [tool.ruff]
 line-length = 100

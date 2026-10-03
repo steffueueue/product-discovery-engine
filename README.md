@@ -4,10 +4,12 @@ Evidence-driven foundations for accountable product decisions, from original sig
 through hypothesis validation and eventual measured outcomes. Prefer transparent
 incompleteness over fabricated certainty.
 
-**Implemented: Milestone 0 (repository foundation) and Milestone 1 (domain foundation).**
-This is a Python modular monolith, not yet a runnable web application. It does not
-perform AI discovery, scoring, delivery selection, specification generation or outcome
-measurement. No API key, database or external service is required.
+**Implemented: Milestones 0–2 (repository, domain foundation, discovery analysis).**
+This Python modular monolith accepts immutable submissions and returns structured,
+reviewable AI interpretation through a replaceable provider. Offline tests need no API
+key. Live analysis requires explicitly configured OpenAI credentials and model.
+Scoring, delivery selection, specification generation and outcome measurement are deferred.
+See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
 
 ## Development
 

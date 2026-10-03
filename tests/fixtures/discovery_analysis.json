@@ -1,0 +1,870 @@
+[
+  {
+    "case": "feature_request",
+    "input": "Add an AI chatbot.",
+    "expected": {
+      "intake_classification": "feature_request",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "hypothesis",
+        "statement": "An AI chatbot is the proposed solution."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "unsupported_numeric",
+    "input": "Probably 40% of users struggle with this.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "Probably 40% of users struggle with this.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [
+            {
+              "source_id": "submission",
+              "quote": "Probably 40% of users struggle with this."
+            }
+          ],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "mixed",
+    "input": "We need semantic search because customers can't find products.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "hypothesis",
+        "statement": "Customers may have difficulty finding relevant products."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "hypothesis",
+        "statement": "Semantic retrieval may improve discovery."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "missing_strategy",
+    "input": "Improve discovery.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "conflicting",
+    "input": "Support reports irrelevant search results. Interviews suggest prices are too high.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [
+        {
+          "id": "i1",
+          "kind": "inference",
+          "statement": "Relevance could explain difficulty.",
+          "citations": [
+            {
+              "source_id": "submission",
+              "quote": "Support reports irrelevant search results. Interviews suggest prices are too high."
+            }
+          ],
+          "rationale": "Reported signal requires review.",
+          "agent_generated": true
+        },
+        {
+          "id": "i2",
+          "kind": "inference",
+          "statement": "Price sensitivity could explain difficulty.",
+          "citations": [
+            {
+              "source_id": "submission",
+              "quote": "Support reports irrelevant search results. Interviews suggest prices are too high."
+            }
+          ],
+          "rationale": "Reported signal requires review.",
+          "agent_generated": true
+        }
+      ],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [
+        {
+          "claim_ids": [
+            "i1",
+            "i2"
+          ],
+          "competing_explanations": [
+            "Relevance",
+            "Price sensitivity"
+          ],
+          "explanation": "Current evidence is compatible with multiple explanations."
+        }
+      ],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "explicit_unknown",
+    "input": "The percentage of affected users is unknown.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "generated_assumption",
+    "input": "Consider improving product discovery.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "causality",
+    "input": "Users who reformulate convert less, therefore bad relevance causes abandonment.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "Poor relevance causes abandonment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [
+        {
+          "id": "i1",
+          "kind": "inference",
+          "statement": "The submission reports correlation between reformulation and conversion.",
+          "citations": [
+            {
+              "source_id": "submission",
+              "quote": "Users who reformulate convert less, therefore bad relevance causes abandonment."
+            }
+          ],
+          "rationale": "Correlation does not establish causation.",
+          "agent_generated": true
+        }
+      ],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "weak_evidence",
+    "input": "One stakeholder says all customers hate search.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  },
+  {
+    "case": "validation",
+    "input": "We do not know whether customers have a discovery problem.",
+    "expected": {
+      "intake_classification": "hypothesis",
+      "normalized_problem": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "target_segment": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "desired_outcome": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "solution_hypothesis": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "expected_behavior_change": {
+        "status": "unknown",
+        "statement": "Not established by supplied context."
+      },
+      "facts": [],
+      "evidence": [],
+      "assumptions": [
+        {
+          "id": "a1",
+          "statement": "A discovery problem exists for a meaningful user segment.",
+          "category": "desirability",
+          "rationale": "This must be investigated, not assumed from a solution request.",
+          "importance": "high",
+          "uncertainty": "high",
+          "decision_relevance": "If false, investing in the solution is unwarranted.",
+          "citations": [],
+          "agent_generated": true
+        }
+      ],
+      "inferences": [],
+      "unknowns": [
+        {
+          "id": "u1",
+          "kind": "unknown",
+          "statement": "Problem prevalence and affected segment are unknown.",
+          "citations": [],
+          "rationale": "No established measurements supplied.",
+          "agent_generated": true
+        }
+      ],
+      "contradictory_signals": [],
+      "strategic_fit": {
+        "status": "insufficient_strategy_context",
+        "objective_ids": [],
+        "potential_alignment": [],
+        "potential_conflicts": [],
+        "explanation": "No configured strategy supplied."
+      },
+      "riskiest_assumption": {
+        "assumption_id": "a1",
+        "decision_impact": "high",
+        "unresolved_uncertainty": "high",
+        "rationale": "Invalidation removes the reason to invest; uncertainty is unresolved."
+      },
+      "validation_recommendation": {
+        "method": "customer_interview",
+        "target_assumption_id": "a1",
+        "rationale": "Investigate problem existence before testing a solution.",
+        "required_input": [
+          "Recent customers and examples of discovery tasks."
+        ],
+        "success_signal": "Repeated observed discovery difficulties.",
+        "failure_signal": "Customers complete relevant tasks without the alleged difficulty.",
+        "relative_cost": "low",
+        "relative_speed": "fast",
+        "cheaper_alternatives_considered": "Review existing support records first if available."
+      },
+      "reasoning_summary": "Input is a signal, not verified evidence. Investigate competing explanations."
+    }
+  }
+]

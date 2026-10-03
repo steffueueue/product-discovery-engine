@@ -27,3 +27,10 @@ unit tests. Verify installation, build, tests, formatting, lint and strict typin
 Milestone 2 should first define application use cases and repository ports, then
 transactional persistence for snapshots/audit events. Define approved gate requirements
 before implementing readiness or prioritization. AI integration is a separate later step.
+
+
+## Milestone 2
+
+Structured review proposals, provider protocol, source/strategy checks and an isolated
+OpenAI Responses adapter are now implemented. See [discovery analysis](discovery-analysis.md)
+and [ADR 0002](../decisions/0002-discovery-analysis.md). The domain remains unchanged.
