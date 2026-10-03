@@ -34,6 +34,10 @@ class ObjectKind(StrEnum):
     EVIDENCE = "evidence"
     ASSUMPTION = "assumption"
     DECISION = "decision"
+    EVIDENCE_ORIGIN = "evidence_origin"
+    VALIDATION_ACTIVITY = "validation_activity"
+    VALIDATION_RESULT = "validation_result"
+    CHALLENGE_ANALYSIS = "challenge_analysis"
 
 
 class AuditTarget(DomainModel):
@@ -50,6 +54,18 @@ class EventType(StrEnum):
     HUMAN_OVERRIDE = "human_override"
     AI_ASSUMPTION_GENERATED = "ai_assumption_generated"
     DECISION_RECORDED = "decision_recorded"
+    EVIDENCE_QUALITY_ASSESSED = "evidence_quality_assessed"
+    EVIDENCE_FRESHNESS_CHANGED = "evidence_freshness_changed"
+    EVIDENCE_ORIGIN_LINKED = "evidence_origin_linked"
+    VALIDATION_CREATED = "validation_created"
+    VALIDATION_READY = "validation_ready"
+    VALIDATION_STARTED = "validation_started"
+    VALIDATION_COMPLETED = "validation_completed"
+    VALIDATION_CANCELLED = "validation_cancelled"
+    VALIDATION_RESULT_RECORDED = "validation_result_recorded"
+    VALIDATION_CRITERIA_CHANGED = "validation_criteria_changed"
+    ASSUMPTION_RISK_REASSESSED = "assumption_risk_reassessed"
+    CHALLENGE_COMPLETED = "challenge_completed"
 
 
 class AuditMetadata(DomainModel):

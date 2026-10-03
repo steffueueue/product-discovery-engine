@@ -79,3 +79,18 @@ class Unknown(DomainModel):
 class StrategyReference(DomainModel):
     id: Text
     version: Annotated[int, Field(ge=1, strict=True)]
+
+
+class Ordinal(StrEnum):
+    VERY_LOW = "very_low"
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
+    VERY_HIGH = "very_high"
+
+
+ORDINAL_ORDER = tuple(Ordinal)
+
+
+def ordinal_min(values: tuple[Ordinal, ...]) -> Ordinal:
+    return min(values, key=ORDINAL_ORDER.index)

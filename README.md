@@ -4,11 +4,20 @@ Evidence-driven foundations for accountable product decisions, from original sig
 through hypothesis validation and eventual measured outcomes. Prefer transparent
 incompleteness over fabricated certainty.
 
-**Implemented: Milestones 0–2 (repository, domain foundation, discovery analysis).**
+**Implemented: Milestones 0–3 (repository, domain, discovery analysis, evidence and validation).**
 This Python modular monolith accepts immutable submissions and returns structured,
-reviewable AI interpretation through a replaceable provider. Offline tests need no API
+reviewable AI interpretation through replaceable providers, plus deterministic evidence
+assessment and audited validation records. Offline tests need no API
 key. Live analysis requires explicitly configured OpenAI credentials and model.
-Scoring, delivery selection, specification generation and outcome measurement are deferred.
+`OPENAI_API_KEY` is optional for normal development; normal pytest and CI require no
+paid API access. Paid live-model verification is intentionally deferred to a later final
+phase by project decision and is not required for milestone completion or merge.
+The 18 existing live evaluations remain explicitly opt-in. See the
+[deferred verification checklist](docs/evals/deferred-live-verification.md) and
+[previous attempt report](docs/evals/milestone-3-live-verification.md).
+Deferred or skipped live checks must never be reported as a semantic pass.
+Discovery Priority, Delivery Readiness, Discovery Gate, delivery selection, specification
+generation and outcome measurement are deferred.
 See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
 
 ## Development
@@ -18,7 +27,7 @@ Requires Python 3.12 or newer. From the repository root:
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[dev]'
-.venv/bin/python -m pytest
+env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
 .venv/bin/ruff check .
 .venv/bin/ruff format --check .
 .venv/bin/mypy src tests
@@ -55,3 +64,19 @@ Read the [product source of truth](docs/product-specs/discovery-prioritization-s
 For the current risks, read the [domain review](docs/architecture/milestone-0-1-domain-review.md).
 `config/policies.example.toml` is explicitly illustrative; no scoring/gate implementation
 or production strategy is configured. Tests use in-memory objects and deterministic clocks.
+
+
+## Milestone 3: evidence and validation
+
+The deterministic layer now assesses claim-scoped quality/freshness, underlying-source
+independence, triangulation and assumption risk. Validation activities preserve
+predefined criteria, explicit lifecycle and append-only results/audits. Challenge Mode
+is a separate structured advisory capability with disconfirmation and provenance guards.
+See [the architecture and end-to-end example](docs/architecture/evidence-validation.md).
+
+```sh
+RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
+.venv/bin/python examples/evidence_validation.py
+```
+
+No Discovery Priority, Delivery Readiness, Discovery Gate or final decision is implemented.

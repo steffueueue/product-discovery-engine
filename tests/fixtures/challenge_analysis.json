@@ -1,0 +1,509 @@
+[
+  {
+    "case": "causality",
+    "input": "Users who reformulate search queries convert less, therefore poor search relevance causes abandonment.",
+    "evidence": [],
+    "expected": {
+      "items": [
+        {
+          "id": "causality-0",
+          "category": "false_causality",
+          "challenge_statement": "Query reformulation and abandonment are correlated; relevance has not been shown to cause abandonment.",
+          "rationale": "An observational association does not isolate a causal mechanism.",
+          "relevant_evidence_ids": [],
+          "unresolved_counterargument": "Price sensitivity, product availability and task difficulty may confound the association.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        },
+        {
+          "id": "causality-1",
+          "category": "confounding",
+          "challenge_statement": "Difficult purchase tasks may cause both reformulation and abandonment.",
+          "rationale": "Task difficulty is a credible common cause.",
+          "relevant_evidence_ids": [],
+          "unresolved_counterargument": "Relevance may still matter; investigate alongside task difficulty.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [],
+      "competing_explanations": [
+        "Poor relevance",
+        "Price sensitivity or difficult purchase tasks"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "No supplied evidence establishes causality. Independent source coverage and population reach are unknown.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  },
+  {
+    "case": "stakeholder",
+    "input": "One stakeholder says customers struggle with search; no customer evidence has been supplied.",
+    "evidence": [],
+    "expected": {
+      "items": [
+        {
+          "id": "stakeholder-0",
+          "category": "stakeholder_bias",
+          "challenge_statement": "A single stakeholder belief does not establish customer problem prevalence.",
+          "rationale": "No direct customer observations or representative sample are supplied.",
+          "relevant_evidence_ids": [],
+          "unresolved_counterargument": "The stakeholder may have seen a real problem, but scope and independence remain unresolved.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        },
+        {
+          "id": "stakeholder-1",
+          "category": "sample_bias",
+          "challenge_statement": "Independent customer coverage is missing.",
+          "rationale": "One account cannot represent all customers.",
+          "relevant_evidence_ids": [],
+          "unresolved_counterargument": "Even a real example does not establish frequency.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [],
+      "competing_explanations": [
+        "Customer difficulty",
+        "Stakeholder preference"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "No independent customer evidence. Coverage and reach remain unknown.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  },
+  {
+    "case": "confirmation_heavy",
+    "input": "All supplied evidence supports search relevance problems. Search explicitly for credible disconfirmation.",
+    "evidence": [
+      {
+        "number": 1,
+        "family": "interviews",
+        "method": "customer_interview"
+      },
+      {
+        "number": 2,
+        "family": "support",
+        "method": "support_ticket_analysis"
+      }
+    ],
+    "expected": {
+      "items": [
+        {
+          "id": "confirmation_heavy-0",
+          "category": "confirmation_bias",
+          "challenge_statement": "A confirmation-heavy set may reflect selective evidence collection.",
+          "rationale": "No contradicting observations or non-affected segments were collected.",
+          "relevant_evidence_ids": [
+            "00000000-0000-0000-0000-000000000065",
+            "00000000-0000-0000-0000-000000000066"
+          ],
+          "unresolved_counterargument": "Consistent observations may be real; deliberately seek customers who succeed.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [],
+      "competing_explanations": [
+        "Relevance problems",
+        "Selective recruitment or task differences"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "Two independent source families support existence, but disconfirming evidence and wider coverage are missing.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  },
+  {
+    "case": "shared_source",
+    "input": "Three analyses of the same support-ticket dataset are presented as independent triangulation.",
+    "evidence": [
+      {
+        "number": 1,
+        "family": "same-ticket-corpus",
+        "method": "support_ticket_analysis"
+      },
+      {
+        "number": 2,
+        "family": "same-ticket-corpus",
+        "method": "support_ticket_analysis"
+      },
+      {
+        "number": 3,
+        "family": "same-ticket-corpus",
+        "method": "support_ticket_analysis"
+      }
+    ],
+    "expected": {
+      "items": [
+        {
+          "id": "shared_source-0",
+          "category": "shared_source",
+          "challenge_statement": "Three reports derived from one ticket corpus are one underlying source family.",
+          "rationale": "Repeated analysis cannot supply independent confirmation.",
+          "relevant_evidence_ids": [
+            "00000000-0000-0000-0000-000000000065",
+            "00000000-0000-0000-0000-000000000066",
+            "00000000-0000-0000-0000-000000000067"
+          ],
+          "unresolved_counterargument": "The source may still establish a sample problem; another method is needed.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [],
+      "competing_explanations": [
+        "Customer relevance difficulty",
+        "Support-channel selection effects"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "One underlying source family, not independent triangulation. The ticket sample does not establish population reach.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  },
+  {
+    "case": "old_evidence",
+    "input": "Search evidence collected years ago is relevant historical context; it needs review, not automatic rejection as false.",
+    "evidence": [
+      {
+        "number": 1,
+        "family": "historical-study",
+        "method": "customer_interview",
+        "collected": "2020-01-01"
+      }
+    ],
+    "expected": {
+      "items": [
+        {
+          "id": "old_evidence-0",
+          "category": "freshness",
+          "challenge_statement": "Historical evidence needs review against the current search experience.",
+          "rationale": "The deterministic freshness assessment reports stale context; products and segments may have changed.",
+          "relevant_evidence_ids": [
+            "00000000-0000-0000-0000-000000000065"
+          ],
+          "unresolved_counterargument": "Age alone does not make historical observations false.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [],
+      "competing_explanations": [
+        "Historical relevance difficulty",
+        "Changed product experience"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "Retain historical evidence and review applicability; age does not make it false. Current reach remains unknown.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  },
+  {
+    "case": "strong_mixed_methods",
+    "input": "Independent customer interviews, behavioral analytics and support evidence indicate search difficulty; causal and population limits remain.",
+    "evidence": [
+      {
+        "number": 1,
+        "family": "interview-study",
+        "method": "customer_interview"
+      },
+      {
+        "number": 2,
+        "family": "analytics-dataset",
+        "method": "behavioral_analytics",
+        "statement": "Observed sessions include repeated query reformulations and search exits"
+      },
+      {
+        "number": 3,
+        "family": "ticket-corpus",
+        "method": "support_ticket_analysis",
+        "statement": "Reviewed support cases describe difficulty finding relevant products"
+      }
+    ],
+    "expected": {
+      "items": [
+        {
+          "id": "strong_mixed_methods-0",
+          "category": "scope_limitation",
+          "challenge_statement": "Meaningful independent triangulation supports the scoped problem without establishing causality or population reach.",
+          "rationale": "Three independent methods converge, but selected samples and observational designs limit generalization.",
+          "relevant_evidence_ids": [
+            "00000000-0000-0000-0000-000000000065",
+            "00000000-0000-0000-0000-000000000066",
+            "00000000-0000-0000-0000-000000000067"
+          ],
+          "unresolved_counterargument": "The problem is defensible in the scoped sample; economic impact and causal effect still need evidence.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [],
+      "competing_explanations": [
+        "Relevance difficulty",
+        "Task difficulty or price can also affect abandonment"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "Meaningful independent mixed-method triangulation for problem existence in the studied sample. Population reach, economics and causality remain unestablished.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  },
+  {
+    "case": "alternative_explanation",
+    "input": "Support tickets indicate relevance problems. Exit surveys indicate price is a major abandonment reason. Preserve both explanations.",
+    "evidence": [
+      {
+        "number": 1,
+        "family": "support",
+        "method": "support_ticket_analysis",
+        "statement": "Support-ticket customers report relevance difficulties before abandoning search",
+        "target": "causal_mechanism"
+      },
+      {
+        "number": 2,
+        "family": "exit-survey",
+        "method": "survey",
+        "direction": "contradicts",
+        "statement": "Exit surveys indicate price is a major abandonment reason",
+        "target": "causal_mechanism"
+      }
+    ],
+    "expected": {
+      "items": [
+        {
+          "id": "alternative_explanation-0",
+          "category": "alternative_explanation",
+          "challenge_statement": "Abandonment may relate to price as well as relevance.",
+          "rationale": "Support and exit-survey channels suggest competing explanations.",
+          "relevant_evidence_ids": [
+            "00000000-0000-0000-0000-000000000065",
+            "00000000-0000-0000-0000-000000000066"
+          ],
+          "unresolved_counterargument": "Neither source establishes a universal winner; segment and method differences may explain the mix.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        },
+        {
+          "id": "alternative_explanation-1",
+          "category": "contradictory_evidence",
+          "challenge_statement": "Price evidence challenges a relevance-only explanation.",
+          "rationale": "Contradictory evidence is retained in the mixed knowledge state.",
+          "relevant_evidence_ids": [
+            "00000000-0000-0000-0000-000000000065",
+            "00000000-0000-0000-0000-000000000066"
+          ],
+          "unresolved_counterargument": "Relevance and price may both contribute.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [
+        "00000000-0000-0000-0000-000000000066"
+      ],
+      "competing_explanations": [
+        "Search relevance",
+        "Price sensitivity"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "Mixed independent source evidence retains competing relevance and price explanations; no forced winner.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  },
+  {
+    "case": "solution_first",
+    "input": "We need an AI chatbot.",
+    "evidence": [],
+    "expected": {
+      "items": [
+        {
+          "id": "solution_first-0",
+          "category": "solution_first",
+          "challenge_statement": "Is the underlying customer problem actually established?",
+          "rationale": "A preferred solution has been supplied without evidence of a customer problem.",
+          "relevant_evidence_ids": [],
+          "unresolved_counterargument": "A chatbot could help, but need, desirability and alternatives are unknown.",
+          "additional_evidence_required": [
+            "Independent observations that can falsify the scoped assumption"
+          ],
+          "severity": "high",
+          "recommended_validation": {
+            "method": "customer_interview",
+            "rationale": "Cheapest credible investigation of the unresolved alternative"
+          },
+          "ai_generated": true,
+          "provenance": {
+            "provider": "fixture",
+            "model": "golden-v1",
+            "prompt_version": "challenge-analysis-v1"
+          }
+        }
+      ],
+      "contradicting_evidence_ids": [],
+      "competing_explanations": [
+        "Unmet customer need",
+        "Stakeholder novelty preference"
+      ],
+      "disconfirming_evidence_required": [
+        "Seek representative customers and segments whose experience contradicts the current explanation"
+      ],
+      "source_scope_notes": "No evidence establishes problem existence, reach or that a chatbot is the right solution.",
+      "limitations": [
+        "Advisory interpretation; supplied classifications and methods require accountable review"
+      ],
+      "advisory_only": true
+    }
+  }
+]
