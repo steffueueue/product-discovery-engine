@@ -18,3 +18,8 @@ solution-first framing. `test_challenge_golden.py` checks the same expectations 
 and with opt-in live models. Fixture passes establish schema/reference/semantic contracts,
 not live model quality. The existing manual live workflow already discovers these tests.
 Use `RUN_LIVE_AI_EVALS=0` for offline verification; CI explicitly uses that setting.
+
+The [Milestone 3 live verification report](milestone-3-live-verification.md) records the
+actual dispatched GitHub runs. The latest run is infrastructure-blocked by HTTP 429 on
+all 18 cases; it does not establish live semantic quality. Safe adapter diagnostics now
+expose HTTP status and allowlisted codes without raw provider payloads.

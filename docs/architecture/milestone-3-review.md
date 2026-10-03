@@ -133,3 +133,12 @@ The review did not add Milestone 4 functionality.
 - `tests/unit/test_challenge_analysis.py`
 - `tests/unit/test_evidence_validation.py`
 - `tests/unit/test_validation.py`
+
+## Live-verification follow-up
+
+The initial offline totals above describe `5adc79a`. The follow-up safe-provider-diagnostics
+fix raises offline coverage to **593 passed, 18 live tests skipped**. Both dispatched GitHub
+live suites failed before model output; the rerun confirms HTTP 429 on every case. See
+[the live verification report](../evals/milestone-3-live-verification.md) for run links,
+root-cause classification, all eight case assessments, complete checks and the final review.
+Live semantic behavior remains unverified; no evaluation was weakened.
