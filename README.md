@@ -1,146 +1,168 @@
 # Product Discovery Engine
 
-Evidence-driven foundations for accountable product decisions, from original signals
-through hypothesis validation and eventual measured outcomes. Prefer transparent
-incompleteness over fabricated certainty.
+An evidence-driven product decision system that turns messy product signals into
+traceable learning, accountable delivery decisions and measured outcomes.
 
-**Implemented: Milestones 0–7 (v0.1 functional lifecycle through reviewed outcomes).**
-This Python modular monolith accepts immutable submissions and returns structured,
-reviewable AI interpretation through replaceable providers, plus deterministic evidence
-assessment and audited validation records. Offline tests need no API
-key. Live analysis requires explicitly configured OpenAI credentials and model.
-`OPENAI_API_KEY` is optional for normal development; normal pytest and CI require no
-paid API access. Paid live-model verification is intentionally deferred to a later final
-phase by project decision and is not required for milestone completion or merge.
-The 18 existing live evaluations remain explicitly opt-in. See the
-[deferred verification checklist](docs/evals/deferred-live-verification.md) and
-[previous attempt report](docs/evals/milestone-3-live-verification.md).
-Deferred or skipped live checks must never be reported as a semantic pass.
-Discovery Priority, Delivery Readiness and Discovery Gate are implemented separately.
-Human delivery selection, reviewed specification drafting, completeness, clarification and
-Delivery Gate, implementation records, outcome measurement and reviewed evidence feedback are
-implemented. Production persistence, UI, deployment execution and portfolio ranking remain deferred.
-See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue)](pyproject.toml)
+[![Python quality](https://github.com/steffueueue/product-discovery-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/steffueueue/product-discovery-engine/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Development
+Product teams decide from customer signals, interviews, analytics, stakeholder input,
+assumptions, strategy and increasingly AI-generated interpretation. As inputs become
+shipped work, uncertainty can harden into false certainty and decision rationale can
+disappear. This system preserves what is known, what is assumed, who decided, and what
+happened afterward.
 
-Requires Python 3.12 or newer. From the repository root:
+**AI interprets. Deterministic code governs. Humans own decisions.**
+
+```mermaid
+flowchart TB
+    D["Signal → Hypothesis → Evidence → Validation"]
+    DG[Discovery Gate]
+    SEL["Human delivery selection → DeliverySpec"]
+    G[Delivery Gate]
+    O["Implementation record → Outcome measurement"]
+    F[Evidence feedback]
+    C[Human-reviewed closure]
+    D --> DG --> SEL --> G --> O --> F --> C
+    F -. New learning .-> D
+```
+
+The v0.1 lifecycle is complete in a Python modular monolith. People supply implementation
+and outcome records; execution and analytics collection remain external. Closure ends a
+reviewed episode while new evidence informs discovery.
+
+## Three authority layers
+
+| Layer | Responsibility |
+| --- | --- |
+| **AI** | Interpret signals, expose competing explanations through Challenge Mode, and draft specification proposals. |
+| **Deterministic system** | Assess evidence quality/freshness, learning priority and readiness; enforce gates, lifecycle rules, version integrity and target comparison. |
+| **Humans** | Select delivery work, accept or reject proposals, review knowledge and specifications, record explicitly supported overrides, interpret causality and authorize final closure. |
+
+AI output remains advisory. Human acceptance retains its origin and review history.
+See [authority boundaries](docs/architecture/authority-boundaries.md) for concrete examples.
+
+## What makes it different
+
+- **Unknown is valid.** Missing information stays visible instead of becoming invented certainty.
+- **Contradictions survive.** More supporting evidence cannot cancel a material contradiction.
+- **Learning priority and delivery readiness are separate.** An important unanswered question can deserve attention while delivery remains blocked.
+- **Gate pass is not a build recommendation.** Delivery selection and implementation handoff require explicit human decisions.
+- **A proposal is not a specification.** AI wording becomes authoritative only through review and human materialization.
+- **Target achievement is not causal proof.** Failed, mixed and inconclusive outcomes return as evidence rather than disappearing.
+
+## The search relevance case
+
+Customers struggle to find relevant products. The working hypothesis is that relevance
+contributes to discovery friction; the stronger claim that it is the principal cause of
+abandonment is an assumption. Bounded evidence supports the problem, while price remains
+a competing explanation.
+
+High-impact uncertainty drives a targeted comparison. Its synthetic result contradicts
+the stronger causal assumption. Human review keeps that contradiction and reframes the
+candidate around the observed problem. The Discovery Gate can then pass without endorsing
+a particular search technology.
+
+A human selects bounded catalogue-search work and supplies a DeliverySpec: a versioned
+delivery specification. Missing interface details block handoff until an owned clarification
+produces a new version, human review of that version and a Delivery Gate pass.
+Optional AI drafting uses a separate proposal/review path; the primary end-to-end example
+uses human-authored specification content.
+
+The implementation record retains a scope reduction to signed-in catalogue users and
+leaves actual production exposure unverified. The measured synthetic results are:
+
+| Metric | Baseline → observation | Target evaluation |
+| --- | --- | --- |
+| Search success | 60% → 74% | Met the ≥70% target |
+| Abandonment | 30% → 30% | Did not meet the reduction target |
+| p95 search latency | 180 ms → 290 ms | Exceeded the ≤250 ms guardrail |
+
+**MIXED outcome; causality unresolved.** Three evidence items feed back into discovery.
+A human records limitations, links follow-up learning and closes the reviewed episode.
+All data and actors in this example are synthetic.
+
+Read the [portfolio walkthrough](docs/portfolio-walkthrough.md) for the full story.
+
+## Quickstart
+
+Requires **Python 3.12+**. From a clone of this repository:
 
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[dev]'
+env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python examples/outcome_feedback.py
+```
+
+**No API key is required for the deterministic core or offline examples.** The representative
+demo is the fastest way to understand the complete lifecycle. It uses hand-authored inputs
+and an offline Challenge Mode provider, then prints scope deviation, target results, MIXED
+assessment, unresolved causality and evidence feedback.
+
+The [full credential-free suite](#full-verification) is optional for first-time exploration.
+
+Live model evaluation is optional, separately authorized and currently deferred; offline
+contracts do not establish live semantic quality. See [evaluation documentation](docs/evals/README.md).
+For offline specification proposal review, run
+`.venv/bin/python examples/delivery_specification.py`.
+
+## Where to look
+
+| Reader | Suggested route |
+| --- | --- |
+| Product leader / hiring manager / TPM | This README → [portfolio walkthrough](docs/portfolio-walkthrough.md) → [visual architecture](docs/architecture/portfolio-architecture.md) → [authority boundaries](docs/architecture/authority-boundaries.md). |
+| Technical reviewer | [Architecture overview](docs/architecture/overview.md) → [visual architecture](docs/architecture/portfolio-architecture.md) → [ADRs](docs/README.md#architectural-decisions). Start with [discovery gating](src/product_discovery_engine/domain/discovery_gate.py) and [outcome orchestration](src/product_discovery_engine/application/outcome_feedback.py). |
+| AI reviewer | [Provider boundary](src/product_discovery_engine/application/discovery_analysis.py) → [versioned prompts](src/product_discovery_engine/ai/prompts.py) → [offline evals](tests/evals/README.md) → [deferred live verification](docs/evals/deferred-live-verification.md). |
+
+**Deep product reference / source of truth:** the [full product specification](docs/product-specs/discovery-prioritization-system-v0.1.md).
+The [documentation index](docs/README.md) connects capability details, decisions and history.
+
+## Engineering quality
+
+Strict mypy, Ruff lint/format checks and credential-free tests run in
+[CI](.github/workflows/ci.yml). Immutable, versioned domain records preserve full snapshots
+and matching audits; tests enforce architecture boundaries and reject stale or mismatched
+workflow inputs. The domain has no provider, storage, UI or HTTP dependencies.
+
+The [v0.1 verification summary](docs/releases/v0.1.0.md#offline-verification) records
+**1,099 credential-free tests passed** and **18 live AI checks intentionally skipped/deferred**.
+Live model semantics remain unverified.
+
+### Full verification
+
+The full suite may take several minutes because of deep immutable snapshot validation.
+
+```sh
 env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
 .venv/bin/ruff check .
 .venv/bin/ruff format --check .
 .venv/bin/mypy src tests
 ```
 
-Format with `.venv/bin/ruff format .`. Build a distributable wheel with
-`.venv/bin/python -m pip wheel . --no-deps --wheel-dir dist`.
-Dependency ranges are declared in `pyproject.toml`; `requirements-dev.lock` records
-exact runtime/development/build dependencies for reproducible Python 3.12 setup:
+For reproducible development, install `requirements-dev.lock`, then install the project
+with `.venv/bin/python -m pip install --no-deps --no-build-isolation -e .`.
+Use `.venv/bin/ruff format .` to format and
+`.venv/bin/python -m pip wheel . --no-deps --wheel-dir dist` to build a wheel.
 
-```sh
-.venv/bin/python -m pip install -r requirements-dev.lock
-.venv/bin/python -m pip install --no-deps --no-build-isolation -e .
-```
+## What v0.1 is not
 
-## Domain capabilities
+There is no production database, RBAC/authenticated actors, web UI, external analytics
+connector or automated deployment. Callers supply current records and retain full history;
+production transactions and concurrency protection remain future work. Live model
+verification is deferred. Semantic adequacy, source truth and causal interpretation still
+require accountable human judgment.
 
-- Immutable original submissions and hypothesis snapshots.
-- Fact, evidence, assumption, inference and unknown claim categories.
-- Source provenance, accountable owners and versioned strategy references.
-- Supporting and contradicting evidence with deterministic policy-based freshness.
-- Qualitative assumption uncertainty; no invented probability percentages.
-- Explicit lifecycle transitions and auditable material revisions/evidence additions.
+## Development approach
 
-Hypothesis snapshots live in `domain/hypotheses.py`; audited changes live in
-`domain/hypothesis_changes.py`. Domain operations return snapshots and events; callers
-must retain the full snapshots together with their audit events. Event metadata alone
-does not reconstruct material field values. Durable storage, referential integrity across objects, concurrency handling and authorization
-are not implemented yet. Model validation cannot establish factual truth or external
-source authenticity. Declared lifecycle eligibility does not imply readiness gates passed.
+This project was developed using a spec-driven, AI-assisted engineering workflow.
+Product architecture, invariants, policy boundaries, acceptance criteria and evaluation
+contracts were defined before implementation. Coding agents implemented against those
+constraints; each functional increment was reviewed and verified before merge.
 
-Read the [product source of truth](docs/product-specs/discovery-prioritization-system-v0.1.md),
-[architecture](docs/architecture/overview.md), and [design decisions](docs/decisions/0001-domain-foundation.md).
-For the current risks, read the [domain review](docs/architecture/milestone-0-1-domain-review.md).
-`config/policies.example.toml` is explicitly illustrative; no scoring/gate implementation
-or production strategy is configured. Tests use in-memory objects and deterministic clocks.
+## Development history and release
 
-
-## Milestone 3: evidence and validation
-
-The deterministic layer now assesses claim-scoped quality/freshness, underlying-source
-independence, triangulation and assumption risk. Validation activities preserve
-predefined criteria, explicit lifecycle and append-only results/audits. Challenge Mode
-is a separate structured advisory capability with disconfirmation and provenance guards.
-See [the architecture and end-to-end example](docs/architecture/evidence-validation.md).
-
-```sh
-RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
-.venv/bin/python examples/evidence_validation.py
-```
-
-Milestone 3 supplies knowledge inputs to the separate Milestone 4 decisioning layer.
-
-
-## Milestone 4: discovery decisioning
-
-Deterministic learning priority, qualitative delivery readiness and an audited Discovery
-Gate are separate policies in `config/discovery-decisioning.v1.toml`. Unknowns, evidence
-targets, independent sources, freshness and human review remain explicit. Candidacy now
-requires a current gate pass through the dedicated human promotion operation; ordinary
-status transitions cannot bypass it. Overrides are separate, narrowly configured audits.
-
-```sh
-.venv/bin/python examples/discovery_decisioning.py
-```
-
-The offline synthetic learning loop initially blocks, incorporates validation and human
-review, then stops at `candidate_for_delivery_prioritization`. No build recommendation
-or delivery selection follows. Read the [architecture, policy tables and limits](docs/architecture/discovery-decisioning.md),
-[ADR](docs/decisions/0004-discovery-decisioning.md) and
-[verification report](docs/architecture/milestone-4-review.md).
-
-### Milestone 5: delivery selection and draft specifications
-
-[Delivery specification architecture](docs/architecture/delivery-specification.md) and
-[ADR 0005](docs/decisions/0005-reviewed-delivery-specification-proposals.md) explain the
-separate human selection, optional AI proposal, explicit review and immutable DRAFT versions.
-Run the complete credential-free synthetic flow with:
-
-```sh
-env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python examples/delivery_specification.py
-```
-
-Gate PASS does not select work. Draft creation does not authorize implementation.
-Milestone 6 adds completeness, clarification workflows, Delivery Gate and human handoff.
-
-
-Milestone 6 adds qualitative specification completeness, authoritative gaps, owned
-clarifications, exact human review, controlled delivery readiness, deterministic Delivery
-Gate and separate implementation handoff. Run `.venv/bin/python examples/spec_delivery.py`
-for the credential-free search example. It stops at handoff; the hypothesis remains selected.
-See [Milestone 6 architecture](docs/architecture/spec-completeness-delivery-gate.md) and
-[ADR 0006](docs/decisions/0006-separate-specification-and-delivery-authority.md).
-
-
-## Milestone 7: implementation outcomes and learning
-
-Explicit implementation records preserve authorized scope, actual completion and deviations.
-Versioned measurement plans retain baselines, predefined targets, metric populations/windows,
-primary/secondary/guardrail results and post-hoc changes. Target achievement remains separate
-from human causal interpretation. Outcome evidence appends original discovery knowledge;
-human review and dedicated lifecycle operations control measurement and closure.
-
-```sh
-env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python examples/outcome_feedback.py
-```
-
-The search example retains improved search success, unchanged abandonment and a latency
-regression as MIXED, with unresolved causality, new evidence, explicit follow-up learning
-and human-reviewed closure. Closed means episode reviewed, not hypothesis proven.
-Read [the architecture and limitations](docs/architecture/implementation-outcome-feedback.md),
-[ADR 0007](docs/decisions/0007-separate-implementation-outcomes-and-causal-learning.md) and
-[verification report](docs/architecture/milestone-7-review.md). No paid API calls are needed.
-Production hardening and final repository polish remain separate work.
+[Development history](docs/history/development-history.md) preserves Milestones 0–7,
+original repository narratives and historical reviews.
+See the [v0.1.0 release-note draft](docs/releases/v0.1.0.md),
+[repository metadata recommendations](docs/repository-metadata.md) and [MIT license](LICENSE).
