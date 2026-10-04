@@ -15,7 +15,7 @@ Evidence-driven product decision system from discovery signals to measured outco
 - technical-product-management
 - requirements-engineering
 - decision-support
-- artificial-intelligence
+- ai-product-management
 - llm
 - python
 - pydantic

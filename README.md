@@ -8,10 +8,10 @@ traceable learning, accountable delivery decisions and measured outcomes.
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 Product teams decide from customer signals, interviews, analytics, stakeholder input,
-assumptions, strategy and increasingly AI-generated interpretation. As these inputs
-become plans and shipped work, uncertainty can harden into false certainty and the
-reason for a decision can disappear. This system preserves what is known, what is
-assumed, who decided, and what happened afterward.
+assumptions, strategy and increasingly AI-generated interpretation. As inputs become
+shipped work, uncertainty can harden into false certainty and decision rationale can
+disappear. This system preserves what is known, what is assumed, who decided, and what
+happened afterward.
 
 **AI interprets. Deterministic code governs. Humans own decisions.**
 
@@ -28,10 +28,9 @@ flowchart TB
     F -. New learning .-> D
 ```
 
-The v0.1 functional lifecycle is complete in a Python modular monolith. It records
-implementation and outcomes supplied by people; software execution and analytics
-collection remain external. Closure ends a reviewed episode while new evidence informs
-the next discovery decision.
+The v0.1 lifecycle is complete in a Python modular monolith. People supply implementation
+and outcome records; execution and analytics collection remain external. Closure ends a
+reviewed episode while new evidence informs discovery.
 
 ## Three authority layers
 
@@ -65,9 +64,9 @@ the stronger causal assumption. Human review keeps that contradiction and refram
 candidate around the observed problem. The Discovery Gate can then pass without endorsing
 a particular search technology.
 
-A human selects bounded catalogue-search work and supplies a DeliverySpec: a versioned,
-traceable delivery specification. Missing interface details block handoff until an owned
-clarification produces a new version, an exact human review and a Delivery Gate pass.
+A human selects bounded catalogue-search work and supplies a DeliverySpec: a versioned
+delivery specification. Missing interface details block handoff until an owned clarification
+produces a new version, human review of that version and a Delivery Gate pass.
 Optional AI drafting uses a separate proposal/review path; the primary end-to-end example
 uses human-authored specification content.
 
@@ -82,7 +81,6 @@ leaves actual production exposure unverified. The measured synthetic results are
 
 **MIXED outcome; causality unresolved.** Three evidence items feed back into discovery.
 A human records limitations, links follow-up learning and closes the reviewed episode.
-The primary improvement does not hide the business-metric miss or latency regression.
 All data and actors in this example are synthetic.
 
 Read the [portfolio walkthrough](docs/portfolio-walkthrough.md) for the full story.
@@ -94,29 +92,30 @@ Requires **Python 3.12+**. From a clone of this repository:
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[dev]'
-env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
 env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python examples/outcome_feedback.py
 ```
 
-**No API key is required for the deterministic core or offline examples.** The primary
-demo runs from discovery through reviewed closure with hand-authored inputs and an offline
-Challenge Mode provider. It prints implementation deviation, individual target results,
-MIXED assessment, unresolved causality and appended evidence. Nested snapshot validation
-can make the full suite and final demo take several minutes.
+**No API key is required for the deterministic core or offline examples.** The representative
+demo is the fastest way to understand the complete lifecycle. It uses hand-authored inputs
+and an offline Challenge Mode provider, then prints scope deviation, target results, MIXED
+assessment, unresolved causality and evidence feedback.
+
+The [full credential-free suite](#full-verification) is optional for first-time exploration.
 
 Live model evaluation is optional, separately authorized and currently deferred; offline
 contracts do not establish live semantic quality. See [evaluation documentation](docs/evals/README.md).
-For a shorter demonstration of accepting/rejecting offline specification proposals, run
+For offline specification proposal review, run
 `.venv/bin/python examples/delivery_specification.py`.
 
 ## Where to look
 
 | Reader | Suggested route |
 | --- | --- |
-| Product leader / hiring manager / TPM | This README → [portfolio walkthrough](docs/portfolio-walkthrough.md) → [product specification](docs/product-specs/discovery-prioritization-system-v0.1.md). |
+| Product leader / hiring manager / TPM | This README → [portfolio walkthrough](docs/portfolio-walkthrough.md) → [visual architecture](docs/architecture/portfolio-architecture.md) → [authority boundaries](docs/architecture/authority-boundaries.md). |
 | Technical reviewer | [Architecture overview](docs/architecture/overview.md) → [visual architecture](docs/architecture/portfolio-architecture.md) → [ADRs](docs/README.md#architectural-decisions). Start with [discovery gating](src/product_discovery_engine/domain/discovery_gate.py) and [outcome orchestration](src/product_discovery_engine/application/outcome_feedback.py). |
 | AI reviewer | [Provider boundary](src/product_discovery_engine/application/discovery_analysis.py) → [versioned prompts](src/product_discovery_engine/ai/prompts.py) → [offline evals](tests/evals/README.md) → [deferred live verification](docs/evals/deferred-live-verification.md). |
 
+**Deep product reference / source of truth:** the [full product specification](docs/product-specs/discovery-prioritization-system-v0.1.md).
 The [documentation index](docs/README.md) connects capability details, decisions and history.
 
 ## Engineering quality
@@ -126,12 +125,16 @@ Strict mypy, Ruff lint/format checks and credential-free tests run in
 and matching audits; tests enforce architecture boundaries and reject stale or mismatched
 workflow inputs. The domain has no provider, storage, UI or HTTP dependencies.
 
-The [functional baseline review](docs/architecture/milestone-7-review.md#verification)
-records **1,099 credential-free tests passed** and **18 live AI checks intentionally
-skipped/deferred**. This verifies deterministic behavior and offline contracts, with live
-model semantics still unverified.
+The [v0.1 verification summary](docs/releases/v0.1.0.md#offline-verification) records
+**1,099 credential-free tests passed** and **18 live AI checks intentionally skipped/deferred**.
+Live model semantics remain unverified.
+
+### Full verification
+
+The full suite may take several minutes because of deep immutable snapshot validation.
 
 ```sh
+env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python -m pytest
 .venv/bin/ruff check .
 .venv/bin/ruff format --check .
 .venv/bin/mypy src tests
@@ -160,7 +163,6 @@ constraints; each functional increment was reviewed and verified before merge.
 ## Development history and release
 
 [Development history](docs/history/development-history.md) preserves Milestones 0–7,
-original repository narratives and links to their reviews. Historical deferrals describe
-their stage at the time; the current architecture is documented separately.
+original repository narratives and historical reviews.
 See the [v0.1.0 release-note draft](docs/releases/v0.1.0.md),
 [repository metadata recommendations](docs/repository-metadata.md) and [MIT license](LICENSE).

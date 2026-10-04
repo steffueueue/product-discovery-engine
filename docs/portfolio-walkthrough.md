@@ -143,14 +143,14 @@ no override workflow in v0.1. Actor records are supplied identities, without aut
 | [Separate completeness, review, gate and handoff](decisions/0006-separate-specification-and-delivery-authority.md) | Text presence does not authorize implementation. |
 | [Separate completion, outcomes and causal learning](decisions/0007-separate-implementation-outcomes-and-causal-learning.md) | A launch or met target cannot declare causal success. |
 
-Full records, predecessor snapshots and source artifacts must be retained together.
-Audit metadata alone cannot reconstruct material values. This favors explicit traceability
-at the cost of larger nested records and expensive validation.
+Traceability requires retaining complete historical records and their source artifacts.
+Audit metadata alone cannot reconstruct them. The tradeoff is larger records and expensive
+validation.
 
 ## 9. What the project demonstrates
 
 The project demonstrates product judgment translated into enforceable engineering
-contracts: epistemic discipline, accountable workflow design, AI authority boundaries and
+contracts: explicit uncertainty, accountable workflow design, AI authority boundaries and
 an outcome loop that retains failed learning. A modular monolith, typed records, strict
 mypy, Ruff and deterministic tests keep these decisions reviewable.
 
