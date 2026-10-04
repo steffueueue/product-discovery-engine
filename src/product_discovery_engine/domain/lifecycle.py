@@ -65,5 +65,9 @@ def require_transition(current: HypothesisStatus, target: HypothesisStatus) -> N
         raise InvalidTransition("lifecycle states must be HypothesisStatus values")
     if target == HypothesisStatus.CANDIDATE_FOR_DELIVERY_PRIORITIZATION:
         raise InvalidTransition("invalid hypothesis transition: candidacy requires Discovery Gate")
+    if target == HypothesisStatus.SELECTED_FOR_DELIVERY:
+        raise InvalidTransition(
+            "invalid hypothesis transition: selection requires Delivery Selection"
+        )
     if target not in ALLOWED_TRANSITIONS[current]:
         raise InvalidTransition(f"invalid hypothesis transition: {current.value} -> {target.value}")

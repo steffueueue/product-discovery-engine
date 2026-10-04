@@ -20,7 +20,7 @@ from product_discovery_engine.domain.hypothesis_changes import (
 )
 from product_discovery_engine.domain.lifecycle import HypothesisStatus, InvalidTransition
 
-# Ordinary paths exclude candidacy since Milestone 4: dedicated gate promotion tests cover it.
+# Ordinary paths exclude candidacy/selection: dedicated decision operations cover these edges.
 EXPECTED: dict[str, set[str]] = {
     "new": {"structured", "parked", "rejected", "merged"},
     "structured": {"needs_evidence", "ready_to_validate", "parked", "rejected", "merged"},
@@ -35,7 +35,6 @@ EXPECTED: dict[str, set[str]] = {
         "merged",
     },
     "candidate_for_delivery_prioritization": {
-        "selected_for_delivery",
         "needs_evidence",
         "parked",
         "rejected",

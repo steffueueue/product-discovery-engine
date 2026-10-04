@@ -28,3 +28,10 @@ solution-first framing. `test_challenge_golden.py` checks the same expectations 
 and with opt-in live models. Fixture passes establish schema/reference/semantic contracts,
 not live model quality. The existing manual live workflow already discovers these tests.
 Use `RUN_LIVE_AI_EVALS=0` for offline verification; CI explicitly uses that setting.
+
+Milestone 5 adds `test_specification_golden.py` and ten A–J hand-authored cases in
+`tests/fixtures/specification_drafting.json`. They exercise supplied-context drafting,
+source/proposal/decision origins, unknowns, supported solution/constraints, numeric/reference
+rejection, contradictions and human acceptance. They are exclusively offline contracts,
+not new live tests or semantic passes. Future paid checks are recorded in
+`docs/evals/deferred-live-verification.md` and remain intentionally deferred.

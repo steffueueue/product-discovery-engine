@@ -38,6 +38,10 @@ class ObjectKind(StrEnum):
     VALIDATION_ACTIVITY = "validation_activity"
     VALIDATION_RESULT = "validation_result"
     CHALLENGE_ANALYSIS = "challenge_analysis"
+    DELIVERY_SELECTION = "delivery_selection"
+    DELIVERY_SPEC = "delivery_spec"
+    SPEC_PROPOSAL = "spec_proposal"
+    DELIVERY_CONTEXT = "delivery_context"
 
 
 class AuditTarget(DomainModel):
@@ -74,6 +78,17 @@ class EventType(StrEnum):
     DISCOVERY_GATE_REVIEW_REQUIRED = "discovery_gate_review_required"
     DISCOVERY_GATE_OVERRIDDEN = "discovery_gate_overridden"
     HYPOTHESIS_PROMOTED = "hypothesis_promoted_to_candidate"
+    DELIVERY_SELECTED = "delivery_selected"
+    DELIVERY_SELECTION_RECORDED = "delivery_selection_recorded"
+    DELIVERY_CONTEXT_RECORDED = "delivery_context_recorded"
+    SPEC_DRAFT_GENERATED = "spec_draft_generated"
+    SPEC_PROPOSAL_REVIEWED = "spec_proposal_reviewed"
+    SPEC_ITEM_ACCEPTED = "spec_item_accepted"
+    SPEC_ITEM_REJECTED = "spec_item_rejected"
+    SPEC_CREATED = "spec_created"
+    SPEC_REVISED = "spec_revised"
+    SPEC_SUPERSEDED = "spec_superseded"
+    HUMAN_SPEC_ITEM_ADDED = "human_spec_item_added"
 
 
 class AuditMetadata(DomainModel):
