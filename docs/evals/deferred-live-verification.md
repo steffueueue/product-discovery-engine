@@ -86,3 +86,24 @@ This checklist adds no future milestone implementation or paid execution require
 
 Passing live cases provides bounded observations, not proof of general model reliability
 or factual truth. Accountable human review remains necessary.
+
+## Milestone 5: specification drafting (later authorized phase only)
+
+Status: **live semantics unverified; intentionally deferred**. Ten new hand-authored offline
+contracts and local mocked SDK tests do not establish model reasoning or criterion quality.
+No new live test/workflow is required for this milestone; keep the existing 18 live cases.
+
+- [ ] Verify grounded problem/outcome and explicit solution drafting against supplied context.
+- [ ] Test hallucination resistance and preservation of unknown solution, interface,
+  performance, retention and compliance information.
+- [ ] Test unsupported numeric-threshold avoidance, including spelled-out numbers and
+  indirect metrics beyond the deterministic lexical guard.
+- [ ] Test invented-reference resistance and deterministic rejection of unsupplied IDs,
+  hypothesis versions/fields and cross-hypothesis context.
+- [ ] Test prevention of evidence-to-solution leaps (query reformulation → vector search),
+  and preservation of contradictory/refuted discovery knowledge as uncertainty.
+- [ ] Review acceptance-criteria quality, supported outcomes and explicit unknown measures.
+- [ ] Review distinction between existing sources, human decisions, generated proposals
+  and unknowns; accepting a proposal must retain its origin and complete audit history.
+- [ ] Record reviewed commit, provider/model, `delivery-specification.v1` prompt version,
+  budget, run evidence and bounded semantic conclusions when paid verification is authorized.

@@ -4,7 +4,7 @@ Evidence-driven foundations for accountable product decisions, from original sig
 through hypothesis validation and eventual measured outcomes. Prefer transparent
 incompleteness over fabricated certainty.
 
-**Implemented: Milestones 0–4 (through deterministic discovery decisioning).**
+**Implemented: Milestones 0–5 (through human delivery selection and draft specifications).**
 This Python modular monolith accepts immutable submissions and returns structured,
 reviewable AI interpretation through replaceable providers, plus deterministic evidence
 assessment and audited validation records. Offline tests need no API
@@ -17,7 +17,8 @@ The 18 existing live evaluations remain explicitly opt-in. See the
 [previous attempt report](docs/evals/milestone-3-live-verification.md).
 Deferred or skipped live checks must never be reported as a semantic pass.
 Discovery Priority, Delivery Readiness and Discovery Gate are implemented separately.
-Delivery selection, portfolio ranking, specification generation and outcomes remain deferred.
+Human delivery selection and reviewed specification drafting are implemented. Completeness,
+Delivery Gate, portfolio ranking, implementation and outcomes remain deferred.
 See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
 
 ## Development
@@ -99,3 +100,17 @@ review, then stops at `candidate_for_delivery_prioritization`. No build recommen
 or delivery selection follows. Read the [architecture, policy tables and limits](docs/architecture/discovery-decisioning.md),
 [ADR](docs/decisions/0004-discovery-decisioning.md) and
 [verification report](docs/architecture/milestone-4-review.md).
+
+### Milestone 5: delivery selection and draft specifications
+
+[Delivery specification architecture](docs/architecture/delivery-specification.md) and
+[ADR 0005](docs/decisions/0005-reviewed-delivery-specification-proposals.md) explain the
+separate human selection, optional AI proposal, explicit review and immutable DRAFT versions.
+Run the complete credential-free synthetic flow with:
+
+```sh
+env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python examples/delivery_specification.py
+```
+
+Gate PASS does not select work. Draft creation does not authorize implementation.
+Completeness, clarification workflows and Delivery Gate remain Milestone 6 work.

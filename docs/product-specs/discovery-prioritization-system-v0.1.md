@@ -745,3 +745,72 @@ remain intact. Milestone 5 and later workflows remain deferred. See
 - A gate pass is not a build recommendation. Portfolio ranking, ROI/RICE/WSJF, automatic
   `selected_for_delivery`, DeliverySpec/spec drafting/clarification/completeness, Delivery
   Gate, implementation/outcomes, deployment UI and persistence backend remain deferred.
+
+
+## Milestone 5 – Delivery Selection & Specification Drafting contract
+
+Milestone 5 is authorized independently of the historical Milestone 0–4 scope statements.
+Their contracts remain preserved; this section supersedes their delivery-selection/spec-
+drafting deferral only. Milestone 6 and later functionality remains deferred. See
+[delivery specification architecture](../architecture/delivery-specification.md) and
+[ADR 0005](../decisions/0005-reviewed-delivery-specification-proposals.md).
+
+- Discovery Gate PASS establishes consideration/candidacy, never a build decision.
+  Explicit DeliverySelection requires an accountable human, nonempty rationale, exact
+  current candidacy snapshot and retained candidacy/discovery decision. No AI, score,
+  ranking or generic lifecycle transition may select delivery work.
+- Selection produces `selected_for_delivery`, increments the hypothesis version once,
+  changes only status/update time, and retains immutable before/after snapshots, strategy,
+  optional decision context, human actor/time/reason and separate decision/lifecycle audits.
+  Stale versions, wrong hypotheses, duplicate/noncandidate selection and tampering fail.
+- DeliverySpec is a first-class versioned immutable DRAFT artifact, separate from the
+  discovery hypothesis/history. It binds the exact selected hypothesis/version and
+  DeliverySelection, creation actor/time, schema version, predecessor and last material
+  revision actor/time/reason/changed item IDs. Incomplete or empty drafts are valid.
+- Structured typed items cover title, summary, problem, segment, outcome, scope, non-goals,
+  solution intent, functional/business/quality/data/analytics requirements, given/when/then
+  acceptance criteria with individually traceable clauses, interfaces, dependencies,
+  constraints, risks and open questions. No complete-section requirement or generic content dictionary is introduced.
+- Every material statement distinguishes SOURCE_BACKED, HUMAN_DECISION, AI_PROPOSAL or
+  UNKNOWN origin. Stable references identify supplied hypotheses/fields, claims, evidence,
+  assumptions, results, strategy, selection, human decisions, constraints and source artifacts.
+  Invented, cross-hypothesis and omitted-context references are rejected.
+- Draft context retains exact selection/discovery history, accepted claim snapshots,
+  assumptions, evidence including contradictions, validation, readiness/gate, human-reviewed
+  Challenge Mode dispositions, strategy and explicit human constraints/system information.
+  Providers cannot invent external context or treat linked-but-unsupplied claim IDs as sources.
+- Exact source-backed restatements preserve knowledge scope. Discovery evidence never
+  automatically becomes a solution requirement. Solution-facing source-backed items require
+  explicit solution intent, constraints or system facts; human decisions retain their own
+  origin. Human acceptance never retroactively turns an AI proposal into evidence.
+- Optional AI drafting returns a schema-validated, clearly generated proposal linked to
+  exact context and actual provider/model/prompt version. It does not mutate authoritative
+  specs. Independent human review records acceptance/rejection, actor/time and rationale
+  for every item. Separate human materialization creates/revises the authoritative draft.
+- Missing solution, endpoint/schema, performance threshold or policy remains explicitly
+  unknown. AI cannot fill absent solution intent. Generated numeric wording and endpoint-
+  like interface details need explicit sourced/human content rather than fabricated values.
+  Proposed criteria/quality considerations retain their proposed status and review trail.
+  These are conservative structural/lexical guards, not proof of general semantic truth.
+- Material revision increments exactly once, rejects no-ops, requires human actor/reason,
+  preserves original creation metadata and previous proposal/decision provenance, and
+  retains full before/after snapshots. Reworded/reclassified statements use new item IDs.
+  Supersession links old/new versions through an immutable audit; old snapshots stay intact.
+- Audit selection, lifecycle promotion, explicit context input, draft generation, proposal
+  review, each acceptance/rejection, creation, human requirement/constraint addition, material revision
+  and supersession. Callers retain full records; no persistence or event sourcing is supplied.
+- Domain/application/provider boundaries remain intact. The optional OpenAI adapter uses
+  existing configuration, strict structured output, `store=False`, validated results,
+  sanitized errors and versioned interpretation prompts. Business rules remain in code.
+- Normal development and CI remain credential-free. Offline fakes, ten A–J golden cases
+  and mocked SDK tests verify contracts; paid live verification and all existing live tests
+  remain intentionally deferred. No paid model call or Live AI evals workflow is run, and
+  no semantic pass is claimed. Extend the deferred checklist for drafting behavior.
+- No portfolio ranking/allocation, automatic selection, implementation/code-generation
+  workflow, production deployment, outcome measurement, feedback loop, persistence backend
+  or deployment UI is added. Current-state and concurrency checks remain caller responsibilities.
+- **Milestone 6 deferrals:** completeness scoring/gate; blocking/nonblocking gap classification;
+  targeted clarification questions/ownership; question/answer resolution lifecycle;
+  NEEDS_CLARIFICATION/READY_FOR_REVIEW behavior based on completeness; READY_FOR_DELIVERY;
+  Delivery Gate; implementation authorization. Future enum values are representational only:
+  Milestone 5 constructors/operations authorize DRAFT only.

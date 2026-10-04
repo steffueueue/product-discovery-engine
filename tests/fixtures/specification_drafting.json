@@ -1,0 +1,12 @@
+[
+  {"case":"A", "name":"problem-only", "kind":"solution", "statement":null, "origin":"unknown", "field":"solution_hypothesis", "expected":"unknown"},
+  {"case":"B", "name":"explicit solution", "kind":"solution", "statement":"Offer a manual relevance review tool", "origin":"source_backed", "field":"solution_hypothesis", "expected":"source_backed"},
+  {"case":"C", "name":"unsupported latency", "kind":"quality_requirement", "statement":"Search responds within 200 ms", "origin":"source_backed", "field":"desired_outcome", "expected":"reject"},
+  {"case":"D", "name":"unknown interface", "kind":"interface", "statement":null, "origin":"unknown", "field":null, "expected":"unknown"},
+  {"case":"E", "name":"evidence to solution leap", "kind":"functional_requirement", "statement":"Use vector embeddings", "origin":"source_backed", "field":"problem_statement", "expected":"reject"},
+  {"case":"F", "name":"explicit platform constraint", "kind":"constraint", "statement":"Support the existing web platform", "origin":"source_backed", "field":null, "expected":"source_backed"},
+  {"case":"G", "name":"contradictory evidence", "kind":"risk", "statement":"Relevance causality remains refuted; do not infer a relevance solution", "origin":"ai_proposal", "field":null, "expected":"ai_proposal"},
+  {"case":"H", "name":"invented reference", "kind":"risk", "statement":"Potential limitation", "origin":"ai_proposal", "field":null, "expected":"reject"},
+  {"case":"I", "name":"acceptance criteria proposal", "kind":"acceptance_criterion", "statement":"Observe whether a customer finds a suitable product", "origin":"ai_proposal", "field":null, "expected":"ai_proposal"},
+  {"case":"J", "name":"human decision", "kind":"functional_requirement", "statement":"Offer a manual relevance review tool", "origin":"human_decision", "field":null, "expected":"human_decision"}
+]
