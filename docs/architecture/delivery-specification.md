@@ -1,5 +1,9 @@
 # Milestone 5: Delivery Selection and Specification Drafting
 
+Historical Milestone 5 contract. [Milestone 6](spec-completeness-delivery-gate.md) now adds
+controlled completeness, clarification, review, delivery readiness, gating and handoff;
+its contract supersedes the Milestone 6 deferrals below.
+
 A Discovery Gate PASS answers whether a discovery snapshot may be considered for delivery
 prioritization. It is not a build recommendation. Delivery Selection records a different,
 accountable human product decision. A DeliverySpec then describes proposed delivery work;

@@ -6,6 +6,7 @@ from pathlib import Path
 from product_discovery_engine.domain.decisioning_policy import DecisioningPolicies
 from product_discovery_engine.domain.evidence_policy import EvidencePolicies
 from product_discovery_engine.domain.policies import ProductPolicies
+from product_discovery_engine.domain.spec_completeness_policy import SpecCompletenessPolicy
 
 
 def load_policies(path: Path) -> ProductPolicies:
@@ -23,3 +24,9 @@ def load_decisioning_policies(path: Path) -> "DecisioningPolicies":
     """Validate Milestone 4 independently of model/provider configuration."""
     with path.open("rb") as handle:
         return DecisioningPolicies.model_validate(tomllib.load(handle))
+
+
+def load_spec_completeness_policy(path: Path) -> "SpecCompletenessPolicy":
+    """Load and validate the independent Milestone 6 policy."""
+    with path.open("rb") as handle:
+        return SpecCompletenessPolicy.model_validate(tomllib.load(handle))

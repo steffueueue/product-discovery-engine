@@ -42,6 +42,11 @@ class ObjectKind(StrEnum):
     DELIVERY_SPEC = "delivery_spec"
     SPEC_PROPOSAL = "spec_proposal"
     DELIVERY_CONTEXT = "delivery_context"
+    SPEC_GAP = "spec_gap"
+    CLARIFICATION = "clarification"
+    SPEC_REVIEW = "spec_review"
+    DELIVERY_GATE = "delivery_gate"
+    IMPLEMENTATION_AUTHORIZATION = "implementation_authorization"
 
 
 class AuditTarget(DomainModel):
@@ -89,6 +94,23 @@ class EventType(StrEnum):
     SPEC_REVISED = "spec_revised"
     SPEC_SUPERSEDED = "spec_superseded"
     HUMAN_SPEC_ITEM_ADDED = "human_spec_item_added"
+    SPEC_COMPLETENESS_ASSESSED = "spec_completeness_assessed"
+    SPEC_GAP_DETECTED = "spec_gap_detected"
+    SPEC_GAP_REVIEWED = "spec_gap_reviewed"
+    CLARIFICATION_CREATED = "clarification_created"
+    CLARIFICATION_OWNER_ASSIGNED = "clarification_owner_assigned"
+    CLARIFICATION_ANSWERED = "clarification_answered"
+    CLARIFICATION_RESOLVED = "clarification_resolved"
+    CLARIFICATION_WITHDRAWN = "clarification_withdrawn"
+    SPEC_NEEDS_CLARIFICATION = "spec_needs_clarification"
+    SPEC_READY_FOR_REVIEW = "spec_ready_for_review"
+    SPEC_REVIEW_RECORDED = "spec_review_recorded"
+    SPEC_READY_FOR_DELIVERY = "spec_ready_for_delivery"
+    DELIVERY_GATE_EVALUATED = "delivery_gate_evaluated"
+    DELIVERY_GATE_PASSED = "delivery_gate_passed"
+    DELIVERY_GATE_BLOCKED = "delivery_gate_blocked"
+    DELIVERY_GATE_REVIEW_REQUIRED = "delivery_gate_review_required"
+    IMPLEMENTATION_HANDOFF_AUTHORIZED = "implementation_handoff_authorized"
 
 
 class AuditMetadata(DomainModel):

@@ -53,4 +53,14 @@ inputs and stops at delivery candidacy. Generic status changes cannot bypass the
 Domain knowledge packets translate and reconstruct Milestone 3 evidence; Challenge Mode
 remains advisory with explicit human review. See [discovery decisioning](discovery-decisioning.md)
 and [ADR 0004](../decisions/0004-discovery-decisioning.md). Milestone 4 deferrals in earlier
-sections describe those historical milestones. Persistence and Milestone 5+ remain deferred.
+sections describe those historical milestones. Milestone 5 adds human selection and drafting;
+Milestone 6 adds completeness and handoff below. Persistence and Milestone 7 remain deferred.
+
+
+## Specification completeness and delivery handoff
+
+[Milestone 6](spec-completeness-delivery-gate.md) separates structural completeness,
+owned clarification, human review, controlled readiness, deterministic delivery entry
+and human implementation authorization. It retains exact immutable material versions
+and stops before implementation execution or outcomes. Policy is in
+`config/spec-completeness.v1.toml`; the offline example is `examples/spec_delivery.py`.
