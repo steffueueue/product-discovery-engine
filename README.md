@@ -4,7 +4,7 @@ Evidence-driven foundations for accountable product decisions, from original sig
 through hypothesis validation and eventual measured outcomes. Prefer transparent
 incompleteness over fabricated certainty.
 
-**Implemented: Milestones 0–6 (through specification review and human delivery handoff).**
+**Implemented: Milestones 0–7 (v0.1 functional lifecycle through reviewed outcomes).**
 This Python modular monolith accepts immutable submissions and returns structured,
 reviewable AI interpretation through replaceable providers, plus deterministic evidence
 assessment and audited validation records. Offline tests need no API
@@ -18,7 +18,8 @@ The 18 existing live evaluations remain explicitly opt-in. See the
 Deferred or skipped live checks must never be reported as a semantic pass.
 Discovery Priority, Delivery Readiness and Discovery Gate are implemented separately.
 Human delivery selection, reviewed specification drafting, completeness, clarification and
-Delivery Gate are implemented. Portfolio ranking, implementation and outcomes remain deferred.
+Delivery Gate, implementation records, outcome measurement and reviewed evidence feedback are
+implemented. Production persistence, UI, deployment execution and portfolio ranking remain deferred.
 See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
 
 ## Development
@@ -122,3 +123,24 @@ Gate and separate implementation handoff. Run `.venv/bin/python examples/spec_de
 for the credential-free search example. It stops at handoff; the hypothesis remains selected.
 See [Milestone 6 architecture](docs/architecture/spec-completeness-delivery-gate.md) and
 [ADR 0006](docs/decisions/0006-separate-specification-and-delivery-authority.md).
+
+
+## Milestone 7: implementation outcomes and learning
+
+Explicit implementation records preserve authorized scope, actual completion and deviations.
+Versioned measurement plans retain baselines, predefined targets, metric populations/windows,
+primary/secondary/guardrail results and post-hoc changes. Target achievement remains separate
+from human causal interpretation. Outcome evidence appends original discovery knowledge;
+human review and dedicated lifecycle operations control measurement and closure.
+
+```sh
+env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/python examples/outcome_feedback.py
+```
+
+The search example retains improved search success, unchanged abandonment and a latency
+regression as MIXED, with unresolved causality, new evidence, explicit follow-up learning
+and human-reviewed closure. Closed means episode reviewed, not hypothesis proven.
+Read [the architecture and limitations](docs/architecture/implementation-outcome-feedback.md),
+[ADR 0007](docs/decisions/0007-separate-implementation-outcomes-and-causal-learning.md) and
+[verification report](docs/architecture/milestone-7-review.md). No paid API calls are needed.
+Production hardening and final repository polish remain separate work.

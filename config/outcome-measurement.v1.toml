@@ -1,0 +1,3 @@
+version = "outcome-measurement.v1"
+allow_inconclusive_closure = true
+require_complete_window = true

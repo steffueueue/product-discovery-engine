@@ -1,6 +1,6 @@
 # Product specification v0.1
 
-Status: source of truth for Milestones 0–6.
+Status: source of truth for Milestones 0–7; v0.1 functional lifecycle complete.
 
 The following requirements preserve the founding product brief. Implementation details
 and provisional lifecycle semantics are recorded in ADR 0001. Amend this document
@@ -897,3 +897,98 @@ deferral. See [architecture](../architecture/spec-completeness-delivery-gate.md)
   execution, deployment/completion, implemented transition from authorization, outcome
   metrics, baseline/target/actual comparison, measurement windows, outcome evaluation,
   discovery feedback, measuring_outcome/closed execution and production persistence/UI.
+
+
+## Milestone 7 – Implementation Outcome & Feedback Loop contract
+
+Milestone 7 is authorized independently of the historical Milestone 0–6 scope statements.
+Their contracts remain preserved. This contract supersedes their implementation/outcome/
+feedback deferrals and completes the v0.1 functional lifecycle. See
+[implementation and outcome architecture](../architecture/implementation-outcome-feedback.md)
+and [ADR 0007](../decisions/0007-separate-implementation-outcomes-and-causal-learning.md).
+
+- ImplementationAuthorization permits exact specification handoff only. Explicit immutable
+  ImplementationRecord snapshots represent supplied external reality, not software execution.
+  Planning/start require valid exact hypothesis/selection/spec-version/authorization bindings,
+  accountable owner/actor/time and audit. Handoff never automatically starts or completes work.
+- PLANNED → IN_PROGRESS/CANCELLED and IN_PROGRESS → COMPLETED/CANCELLED are explicit operations.
+  Completion requires time, actual delivered scope, item-level accounting, omissions/deviations,
+  human actor and limitations. Artifact/release references may remain unknown. Terminal records
+  cannot silently restart; original snapshots and authorized DeliverySpec remain unchanged.
+- Deviations identify omitted/changed/reduced/additional/interface-changed behavior and exact
+  original spec items where applicable. Deviations are retained facts, not automatic failure.
+  Additional behavior never silently rewrites the intended spec.
+- Completion is not deployment. Optional ReleaseObservation retains supplied environment,
+  audience, release time, rollout, version, provenance and accountable actor. Partial exposure
+  and limitations remain visible; neither exposure nor release is inferred from completion.
+- Only the dedicated completed-record operation may move selected_for_delivery → implemented.
+  It consumes the exact current authorized hypothesis and exact completed implementation and
+  retains before/after snapshots, consecutive version, human actor, rationale and audit.
+- OutcomeMeasurementPlan binds completed implementation, exact implemented hypothesis and
+  original desired-outcome field/version. Retain source/method, owner, metric definitions,
+  baseline/target definitions, measurement windows, known confounders/risks, version and audit.
+- Metric definitions require name, description, unit, population, aggregation/denominator,
+  source, direction, baseline period, outcome period and exact feedback claim/assumption scope.
+  Primary/secondary/guardrail roles are explicit. Metric names alone are insufficient.
+- Baselines retain known value or explicit unknown reason, period/population/source/method,
+  collection time, limitations and provenance. Numeric comparator, threshold, inclusive range,
+  directional and qualitative-state targets are explicit; no predefined target remains absent.
+  Do not turn qualitative goals into fabricated numbers or invent missing baselines.
+- Plans should predate observations. Revisions preserve full old definitions, new version,
+  actor/time/reason and target audit; initial late plans and changes after measurement begins
+  are explicitly post-hoc. Baseline corrections use new IDs with old snapshots retained.
+  Older observations cannot silently be evaluated against rewritten criteria.
+- Immutable observations retain exact implementation/plan-version/metric/window/population,
+  actual value/state or unknown reason, source, method, collection time, limitations/provenance.
+  Wrong bindings, sources, populations, windows and future collection fail. An observation
+  is not a causal conclusion.
+- Dedicated implemented → measuring_outcome requires an exact completed implementation,
+  explicit plan and current implemented hypothesis. Elapsed time alone cannot enter the state.
+- Deterministic evaluations preserve metric/baseline/target/actual/window, MET/PARTIALLY_MET/
+  NOT_MET/INCONCLUSIVE/NOT_EVALUABLE, explanation, missing information, limitations, time and
+  policy. Partial windows are not extrapolated. Multiple observations remain visible; missing
+  numeric baseline prevents directional comparison, but absolute targets may still evaluate.
+- Target met does not imply causality. CausalInterpretation separately retains exact claim/
+  assumption scope, supporting/contradicting evidence, existing Milestone 3 quality reviews,
+  design, assignment/instrumentation/exposure basis, confounders, limitations and human review.
+  Before/after sequence cannot produce SUPPORTED. Controlled designs need explicit reviewed
+  evidence and cannot conceal unresolved contradictions or fabricate confidence percentages.
+- OutcomeAssessment qualitatively preserves every metric and all limitations. Mixed or negative
+  guardrail/business metrics cannot disappear behind primary improvement. No weighted success
+  percentage, arbitrary product score or autonomous product-success decision is introduced.
+- Human materialization appends new Evidence with actual values, source, methodology/limitations,
+  rationale and provenance to implementation/selection/authorization/spec-version/plan-version/
+  metric/observation. Evidence targets exactly the metric's claim/assumption/population; unrelated
+  claims cannot be validated. Causal-mechanism support requires separate causal authority.
+  Unknown actual values retain missing information rather than fabricated directional evidence.
+- Existing EvidenceValidationService evaluates outcome evidence with the established quality,
+  freshness and source-independence concepts. New knowledge retains old evidence. Contradictions,
+  unchanged business metrics, failed outcomes, selection reasons and authorized specs remain
+  historically reconstructable. Linking evidence does not automatically validate an assumption.
+- OutcomeReview requires a human accountable reviewer, current measuring hypothesis, full plan/
+  metric evaluations/causal interpretations/evidence, time, disposition through assessment,
+  rationale, visible acknowledged limitations, unresolved questions and explicit next actions.
+  AI cannot be the final reviewer. Recommendations execute no action automatically.
+- FollowUpLearning explicitly links a supplied distinct hypothesis and original outcome evidence
+  to the review with provenance and human audit. It does not duplicate/create hypotheses or
+  generate roadmap items automatically.
+- Dedicated measuring_outcome → closed requires exact current human review, completed/acceptable
+  measurement, active policy, accountable actor, closure rationale and audit. Generic lifecycle
+  transitions and generic STATUS_CHANGED histories reject all three controlled outcome edges.
+  Wrong/stale hypothesis/implementation/plan/review/policy references fail.
+- Versioned outcome policy requires full measurement windows by default and explicitly permits
+  human-reviewed inconclusive closure. Policy can forbid INCONCLUSIVE/NOT_EVALUABLE closure;
+  missing-data limitations always remain visible. Closed means reviewed lifecycle episode,
+  not correctness, target achievement or causal proof.
+- Audit planning/start/completion/cancellation/deviations, release observations, implemented,
+  plan/baseline/target creation/revision, observations, measuring_outcome, evaluation, causal
+  interpretation, outcome evidence, human review, follow-up links and closure. Retain full
+  immutable snapshots/audits/sources together; event metadata alone cannot reconstruct values.
+- Core behavior and verification remain deterministic and credential-free. The offline search
+  scenario preserves primary improvement, unchanged abandonment and a latency regression as
+  MIXED, leaves causality unresolved, appends evidence, records human review/follow-up and closes.
+  No new AI provider/prompt/live cases are added; paid verification remains intentionally deferred.
+- Production persistence, transactions/RBAC, web UI, deployment execution, external analytics,
+  automated Jira/roadmap creation, rollback, multi-agent architecture and portfolio optimization
+  remain post-v0.1 hardening/productization. Supplied current snapshots cannot detect withheld
+  external changes; authentic source/human identity and semantic review are caller responsibilities.

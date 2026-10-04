@@ -3,6 +3,7 @@ from uuid import UUID
 
 import pytest
 
+from examples.outcome_feedback import OutcomeScenario, build_outcome_scenario
 from product_discovery_engine.domain.audit import Actor, ActorKind
 from product_discovery_engine.domain.common import Owner, Provenance, SourceReference, SourceType
 from product_discovery_engine.domain.hypotheses import (
@@ -48,3 +49,8 @@ def hypothesis(owner: Owner) -> Hypothesis:
         created_at=at,
         updated_at=at,
     )
+
+
+@pytest.fixture(scope="session")
+def outcome_scenario() -> "OutcomeScenario":
+    return build_outcome_scenario()

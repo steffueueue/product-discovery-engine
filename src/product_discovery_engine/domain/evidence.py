@@ -56,6 +56,18 @@ class FreshnessPolicy(DomainModel):
         return self
 
 
+class PostImplementationProvenance(DomainModel):
+    implementation_id: UUID
+    selection_id: UUID
+    spec_id: UUID
+    spec_version: Annotated[int, Field(ge=1, strict=True)]
+    authorization_id: UUID
+    plan_id: UUID
+    plan_version: Annotated[int, Field(ge=1, strict=True)]
+    metric_id: UUID
+    observation_id: UUID
+
+
 class Evidence(DomainModel):
     id: UUID
     hypothesis_id: UUID
@@ -71,6 +83,7 @@ class Evidence(DomainModel):
     direction: EvidenceDirection
     methodology_notes: Text | None
     provenance: Provenance
+    outcome_provenance: PostImplementationProvenance | None = None
     reviewed_on: date | None = None
     invalidated_on: date | None = None
     invalidation_reason: Text | None = None

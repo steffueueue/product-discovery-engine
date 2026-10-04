@@ -54,7 +54,7 @@ Domain knowledge packets translate and reconstruct Milestone 3 evidence; Challen
 remains advisory with explicit human review. See [discovery decisioning](discovery-decisioning.md)
 and [ADR 0004](../decisions/0004-discovery-decisioning.md). Milestone 4 deferrals in earlier
 sections describe those historical milestones. Milestone 5 adds human selection and drafting;
-Milestone 6 adds completeness and handoff below. Persistence and Milestone 7 remain deferred.
+Milestone 6 adds completeness and handoff below. Milestone 7 completes the functional loop below; persistence remains deferred.
 
 
 ## Specification completeness and delivery handoff
@@ -64,3 +64,15 @@ owned clarification, human review, controlled readiness, deterministic delivery 
 and human implementation authorization. It retains exact immutable material versions
 and stops before implementation execution or outcomes. Policy is in
 `config/spec-completeness.v1.toml`; the offline example is `examples/spec_delivery.py`.
+
+
+## Implementation outcomes and feedback
+
+[Milestone 7](implementation-outcome-feedback.md) separates supplied implementation reality,
+optional release observations, versioned measurement planning, deterministic target comparison,
+human causal interpretation, appended discovery evidence and accountable review/closure.
+`OutcomeFeedbackService` orchestrates pure domain records under
+`config/outcome-measurement.v1.toml`; the complete offline flow is
+`examples/outcome_feedback.py`. [ADR 0007](../decisions/0007-separate-implementation-outcomes-and-causal-learning.md)
+explains why completion, outcome achievement and learning stay separate. Production storage,
+authenticated roles, UI, execution/integrations and final repository polish remain deferred.
