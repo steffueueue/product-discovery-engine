@@ -107,3 +107,14 @@ No new live test/workflow is required for this milestone; keep the existing 18 l
   and unknowns; accepting a proposal must retain its origin and complete audit history.
 - [ ] Record reviewed commit, provider/model, `delivery-specification.v1` prompt version,
   budget, run evidence and bounded semantic conclusions when paid verification is authorized.
+
+
+## Milestone 6: no additional live verification
+
+Completeness, gap classification, clarification templates, review/state transitions,
+Delivery Gate and handoff are deterministic/human-reviewed. No new AI gap/question
+provider or prompt is introduced, so no new live cases are justified in this milestone.
+Existing Milestone 2/3/5 offline contracts stay required and paid verification stays
+deferred. Structural tests and the offline search handoff do not claim live semantic
+verification. Future advisory providers would need offline contracts/golden cases before
+any separately authorized, budgeted live phase.

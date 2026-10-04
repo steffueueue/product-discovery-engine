@@ -1,6 +1,6 @@
 # Product specification v0.1
 
-Status: source of truth for Milestones 0–4.
+Status: source of truth for Milestones 0–6.
 
 The following requirements preserve the founding product brief. Implementation details
 and provisional lifecycle semantics are recorded in ADR 0001. Amend this document
@@ -814,3 +814,86 @@ drafting deferral only. Milestone 6 and later functionality remains deferred. Se
   NEEDS_CLARIFICATION/READY_FOR_REVIEW behavior based on completeness; READY_FOR_DELIVERY;
   Delivery Gate; implementation authorization. Future enum values are representational only:
   Milestone 5 constructors/operations authorize DRAFT only.
+
+
+## Milestone 6 – Spec Completeness, Clarification & Delivery Gate contract
+
+Milestone 6 is authorized independently of historical Milestone 0–5 scope statements.
+Their historical contracts remain intact. This contract supersedes their Milestone 6
+deferral. See [architecture](../architecture/spec-completeness-delivery-gate.md) and
+[ADR 0006](../decisions/0006-separate-specification-and-delivery-authority.md).
+
+- Completeness, gaps, clarification, accountable SpecReview, delivery readiness, Delivery
+  Gate and ImplementationAuthorization are separate decisions. Completeness cannot
+  authorize implementation, and AI cannot own these authoritative decisions.
+- Use deterministic qualitative dimension states UNKNOWN, INSUFFICIENT, PARTIAL,
+  SUFFICIENT and NOT_APPLICABLE, with INCOMPLETE, NEEDS_REVIEW and COMPLETE overall states.
+  Never use percentages, a weighted completeness score or LLM-authoritative assessments.
+- Validate versioned policy covering intent, traceable problem, segment, outcome, scope,
+  non-goals, applicable solution intent, functional/business/acceptance/quality information,
+  interfaces, data, analytics, dependencies, constraints, risks, open questions, traceability
+  and ownership. Required/optional treatment, applicability, minimum states, gap rules,
+  targeted question wording, gate conditions and expiry live outside AI prompts.
+- Applicability depends on supplied hypothesis or explicit accountable human context.
+  Non-applicable dimensions do not fail. Missing applicability remains unknown. Never
+  invent integrations, thresholds, compliance obligations or ownership.
+- First-class SpecGap records retain exact spec/version, dimension/type, affected items,
+  statement, rationale, source/basis, detector/time, classification/status and immutable
+  review/resolution references. BLOCKING, NON_BLOCKING and REVIEW_REQUIRED are explicit;
+  invalid/unknown classifications never silently become non-blocking.
+- Deterministic structural gaps differ from human semantic concerns. Human materialization
+  and consecutive reviews retain original/current classification and audit. Structural
+  absence clears through revision/reassessment. AI output alone cannot create authoritative
+  gaps; optional AI gap/question generation is not introduced in v1.
+- ClarificationQuestion binds an exact authoritative unresolved gap and spec version.
+  Questions target required information using policy wording, inherit gap classification
+  and have explicitly supplied ownership where configured. Prevent duplicate questions
+  against retained supplied history. Questions do not invent facts or answer themselves.
+- Immutable ClarificationAnswer retains human actor/time, actual source references,
+  artifacts, limitations and a strict human-decision marker. OPEN → ANSWERED does not
+  resolve the gap or mutate the spec. Explicit human resolution consumes the latest answer.
+- Material answer acceptance creates v+1, retains the complete before/after change, and
+  materializes that answer's exact wording/provenance into new fact/item identities.
+  Reassessment must establish a sufficient authoritative state. Existing old specs stay
+  unchanged. Same-version semantic resolution needs explicit reviewed gap disposition.
+- Old unresolved questions/gaps cannot silently carry to incompatible versions. Detect
+  stale scope, connect explicit resolution to its resulting version, or explicitly withdraw
+  a question for the supplied current version. Retain all historic state.
+- DRAFT and NEEDS_CLARIFICATION may reach READY_FOR_REVIEW only through current exact
+  assessment; blocking gaps and required supplied unresolved clarifications prevent it.
+  NEEDS_CLARIFICATION requires authoritative unresolved blocking gaps, not AI suggestions.
+- SpecReview is explicit accountable HUMAN review of an exact current assessment/spec.
+  Preserve APPROVED, CHANGES_REQUESTED or REVIEW_WITH_CONCERNS, all reviewed gaps, rationale,
+  concerns, actor/time and audit. READY_FOR_DELIVERY requires sufficient information,
+  COMPLETE assessment, no unresolved blocking/review-required gaps, required ownership and
+  an exact APPROVED review without pending concerns. It only permits gate evaluation.
+- Non-DRAFT spec snapshots carry validated status authority. Generic status mutation
+  cannot bypass it. Material revisions reset to DRAFT. Supersession provides a validated
+  terminal historical view linked to the exact replacement without mutating old snapshots.
+- Delivery Gate operates on the exact current selected hypothesis, DeliverySelection,
+  spec/version, current assessment/review, gap/clarification state and full active policy.
+  Do not rerun Discovery Priority or portfolio selection. Conditions include ready status,
+  identity/linkage, approval, completeness, blocking gaps, clarification resolution,
+  acceptance, applicable interface/data/quality/dependency information, traceability,
+  owner, policy agreement and freshness. Required UNKNOWN prevents ordinary PASS.
+- Retain PASSED/BLOCKED/NEEDS_REVIEW with evaluated/passed/failed/unknown/review conditions,
+  explanations, policy/time, expiry and audits. V1 validity is at most 24 hours from
+  assessment. Wrong identity/version, outdated records, changed full policy, unresolved
+  required clarification and expired gates cannot authorize handoff.
+- ImplementationAuthorization is a separate explicit accountable HUMAN record after
+  ordinary gate PASS, retaining exact spec/version, hypothesis/selection, gate, current
+  input packet/policy, actor/time, rationale, conditions and audit. V1 supports no overrides.
+  Handoff neither changes the hypothesis to implemented nor proves implementation occurred.
+- Audit assessment, gap detection/review, question creation/ownership/answers/resolution/
+  withdrawal, controlled states, review, supersession, gate evaluation/outcomes and handoff.
+  Retain immutable full records; no persistence or role-authority system is supplied.
+- Services require complete supplied current histories. Snapshot validation and expiry
+  cannot discover withheld external changes or replace future atomic latest-state checks.
+- Complete offline tests/quality/package checks and existing AI contracts require no key.
+  The search example stops after owned interface clarification, immutable v2, exact human
+  review, gate PASS and explicit handoff. Paid API calls/live evaluations remain deferred;
+  no new AI provider, prompt or live-semantic checks are added in this milestone.
+- Milestone 7 remains deferred: actual implementation records, production code-generation
+  execution, deployment/completion, implemented transition from authorization, outcome
+  metrics, baseline/target/actual comparison, measurement windows, outcome evaluation,
+  discovery feedback, measuring_outcome/closed execution and production persistence/UI.

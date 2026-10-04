@@ -4,7 +4,7 @@ Evidence-driven foundations for accountable product decisions, from original sig
 through hypothesis validation and eventual measured outcomes. Prefer transparent
 incompleteness over fabricated certainty.
 
-**Implemented: Milestones 0–5 (through human delivery selection and draft specifications).**
+**Implemented: Milestones 0–6 (through specification review and human delivery handoff).**
 This Python modular monolith accepts immutable submissions and returns structured,
 reviewable AI interpretation through replaceable providers, plus deterministic evidence
 assessment and audited validation records. Offline tests need no API
@@ -17,8 +17,8 @@ The 18 existing live evaluations remain explicitly opt-in. See the
 [previous attempt report](docs/evals/milestone-3-live-verification.md).
 Deferred or skipped live checks must never be reported as a semantic pass.
 Discovery Priority, Delivery Readiness and Discovery Gate are implemented separately.
-Human delivery selection and reviewed specification drafting are implemented. Completeness,
-Delivery Gate, portfolio ranking, implementation and outcomes remain deferred.
+Human delivery selection, reviewed specification drafting, completeness, clarification and
+Delivery Gate are implemented. Portfolio ranking, implementation and outcomes remain deferred.
 See [Milestone 2 usage and limitations](docs/architecture/discovery-analysis.md).
 
 ## Development
@@ -113,4 +113,12 @@ env -u OPENAI_API_KEY -u DISCOVERY_ANALYSIS_MODEL RUN_LIVE_AI_EVALS=0 .venv/bin/
 ```
 
 Gate PASS does not select work. Draft creation does not authorize implementation.
-Completeness, clarification workflows and Delivery Gate remain Milestone 6 work.
+Milestone 6 adds completeness, clarification workflows, Delivery Gate and human handoff.
+
+
+Milestone 6 adds qualitative specification completeness, authoritative gaps, owned
+clarifications, exact human review, controlled delivery readiness, deterministic Delivery
+Gate and separate implementation handoff. Run `.venv/bin/python examples/spec_delivery.py`
+for the credential-free search example. It stops at handoff; the hypothesis remains selected.
+See [Milestone 6 architecture](docs/architecture/spec-completeness-delivery-gate.md) and
+[ADR 0006](docs/decisions/0006-separate-specification-and-delivery-authority.md).

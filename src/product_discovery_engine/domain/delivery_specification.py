@@ -1,126 +1,61 @@
 """Authoritative, deliberately incomplete draft versions and reconstructable changes."""
 
 from datetime import datetime
-from enum import StrEnum
-from typing import Annotated
 from uuid import UUID
 
-from pydantic import AwareDatetime, Field, model_validator
+from pydantic import model_validator
 
 from .audit import Actor, AuditEvent, AuditMetadata, AuditTarget, EventType, ObjectKind
-from .common import DomainModel, Text
+from .common import DomainModel
 from .delivery_context import DeliverySpecContext, ReferenceKind
-from .delivery_selection import require_human
-from .spec_items import ContentOrigin, SpecItem, SpecItemType, validate_spec_items
+from .spec_content import (
+    DeliverySpecBody,
+    spec_body,
+)
+from .spec_content import (
+    DeliverySpecStatus as DeliverySpecStatus,
+)
+from .spec_content import (
+    MaterialRevision as MaterialRevision,
+)
+from .spec_content import (
+    SpecVersionReference as SpecVersionReference,
+)
+from .spec_items import ContentOrigin, SpecItem, SpecItemType
 from .spec_proposals import SpecProposalReview
-
-Version = Annotated[int, Field(ge=1, strict=True)]
-
-
-class DeliverySpecStatus(StrEnum):
-    DRAFT = "draft"
-    NEEDS_CLARIFICATION = "needs_clarification"
-    READY_FOR_REVIEW = "ready_for_review"
-    READY_FOR_DELIVERY = "ready_for_delivery"
-    SUPERSEDED = "superseded"
+from .spec_review import SpecStatusRecord, SpecSupersession
 
 
-class SpecVersionReference(DomainModel):
-    id: UUID
-    version: Version
-
-
-class MaterialRevision(DomainModel):
-    actor: Actor
-    at: AwareDatetime
-    reason: Text
-    changed_item_ids: tuple[UUID, ...]
-
-    @model_validator(mode="after")
-    def require_actor_and_changes(self) -> "MaterialRevision":
-        require_human(self.actor)
-        if not self.changed_item_ids or len(set(self.changed_item_ids)) != len(
-            self.changed_item_ids
-        ):
-            raise ValueError("material revision requires unique changed item IDs")
-        return self
-
-
-class DeliverySpec(DomainModel):
-    id: UUID
-    version: Version
-    schema_version: Version = 1
+class DeliverySpec(DeliverySpecBody):
     status: DeliverySpecStatus = DeliverySpecStatus.DRAFT
-    context: DeliverySpecContext
-    items: tuple[SpecItem, ...]
-    proposal_reviews: tuple[SpecProposalReview, ...] = ()
-    created_by: Actor
-    created_at: AwareDatetime
-    previous_version: SpecVersionReference | None = None
-    revision: MaterialRevision | None = None
+    status_history: tuple[SpecStatusRecord, ...] = ()
+    supersession: SpecSupersession | None = None
 
     @model_validator(mode="after")
-    def validate_draft(self) -> "DeliverySpec":
-        require_human(self.created_by)
-        if self.status != DeliverySpecStatus.DRAFT:
-            raise ValueError("Milestone 5 only authorizes DRAFT specifications")
-        validate_spec_items(self.context, self.items)
-        if self.created_at < self.context.selection.selected_at:
-            raise ValueError("spec creation cannot precede selection")
-        material_at = self.revision.at if self.revision else self.created_at
-        if material_at < self.context.assembled_at:
-            raise ValueError("materialization cannot precede context")
-        if self.version == 1:
-            if self.previous_version is not None or self.revision is not None:
-                raise ValueError("v1 cannot have a predecessor or revision")
-            if any(r.record.context != self.context for r in self.proposal_reviews):
-                raise ValueError("initial materialization requires exact reviewed context")
-        elif (
-            self.previous_version != SpecVersionReference(id=self.id, version=self.version - 1)
-            or self.revision is None
-            or self.revision.at < self.created_at
-        ):
-            raise ValueError("revision requires consecutive predecessor and revision metadata")
-        if len({r.record.id for r in self.proposal_reviews}) != len(self.proposal_reviews):
-            raise ValueError("proposal reviews must be unique")
-        accepted: dict[UUID, SpecItem] = {}
-        proposed_ids: set[UUID] = set()
-        for review in self.proposal_reviews:
+    def validate_status_authority(self) -> "DeliverySpec":
+        body = spec_body(self)
+        if len({r.event.id for r in self.status_history}) != len(self.status_history):
+            raise ValueError("status audit IDs must be unique within specification history")
+        previous = DeliverySpecStatus.DRAFT
+        previous_at = self.revision.at if self.revision else self.created_at
+        for record in self.status_history:
+            if record.assessment.spec != body:
+                raise ValueError("status authority must bind exact specification body")
+            if record.before != previous or record.at < previous_at:
+                raise ValueError("status history must be consecutive and chronological")
+            previous, previous_at = record.after, record.at
+        if self.supersession is not None:
             if (
-                review.record.context.selection != self.context.selection
-                or review.reviewed_at > material_at
+                self.supersession.previous != body
+                or self.supersession.event.occurred_at < previous_at
             ):
                 raise ValueError(
-                    "review must bind the same exact selection and precede materialization"
+                    "supersession must bind exact prior body and follow status history"
                 )
-            for item in review.record.proposal.items:
-                if item.id in proposed_ids:
-                    raise ValueError("proposal item identities cannot be reused across proposals")
-                proposed_ids.add(item.id)
-            accepted.update({i.id: i for i in review.accepted_items()})
-        for item in self.items:
-            if item.id in proposed_ids:
-                if accepted.get(item.id) != item:
-                    raise ValueError(
-                        "proposal item must be human accepted with unchanged origin/content"
-                    )
-            elif any(s.origin == ContentOrigin.AI_PROPOSAL for s in item.statements()):
-                raise ValueError(
-                    "AI output alone cannot create authoritative specification content"
-                )
+            previous = DeliverySpecStatus.SUPERSEDED
+        if self.status != previous:
+            raise ValueError("non-DRAFT status requires exact assessment/review authority")
         return self
-
-    @property
-    def hypothesis_id(self) -> UUID:
-        return self.context.hypothesis.id
-
-    @property
-    def hypothesis_version(self) -> int:
-        return self.context.hypothesis.version
-
-    @property
-    def selection_id(self) -> UUID:
-        return self.context.selection.id
 
 
 def changed_items(before: DeliverySpec, after: DeliverySpec) -> tuple[UUID, ...]:
@@ -217,6 +152,10 @@ class DeliverySpecChange(DomainModel):
     @model_validator(mode="after")
     def reconstruct(self) -> "DeliverySpecChange":
         before, after = self.before, self.after
+        if after.status != DeliverySpecStatus.DRAFT or after.status_history or after.supersession:
+            raise ValueError("material creation/revision must reset review authority to DRAFT")
+        if before is not None and before.status == DeliverySpecStatus.SUPERSEDED:
+            raise ValueError("cannot revise a superseded specification")
         if before is None:
             if after.version != 1:
                 raise ValueError("creation starts spec history at v1")
@@ -234,6 +173,8 @@ class DeliverySpecChange(DomainModel):
                 )
             assert after.revision is not None
             prior_at = before.revision.at if before.revision else before.created_at
+            if before.status_history:
+                prior_at = max(prior_at, before.status_history[-1].at)
             if after.revision.at < prior_at:
                 raise ValueError("revision cannot move time backwards")
             changes = changed_items(before, after)

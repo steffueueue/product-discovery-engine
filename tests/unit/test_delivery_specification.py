@@ -325,11 +325,11 @@ def test_invalid_material_revision(inputs: DeliverySpecContext, failure: str) ->
 
 
 @pytest.mark.parametrize("status", [s for s in DeliverySpecStatus if s != DeliverySpecStatus.DRAFT])
-def test_milestone_6_statuses_unreachable(
+def test_generic_status_mutation_cannot_bypass_authority(
     inputs: DeliverySpecContext, status: DeliverySpecStatus
 ) -> None:
     spec = DeliverySpecificationService().create(inputs, actor=ACTOR, at=AT).after
-    with pytest.raises(ValidationError, match="only authorizes DRAFT"):
+    with pytest.raises(ValidationError, match="requires exact assessment/review authority"):
         DeliverySpec.model_validate({**spec.model_dump(), "status": status})
 
 

@@ -1,0 +1,267 @@
+version = "spec-completeness.v1"
+require_blocking_question_owner = true
+validity_hours = 24
+
+[[dimensions]]
+dimension = "intent"
+item_types = ["summary"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "What intent should the delivery summary state?"
+requested_information = "An explicit delivery summary"
+
+[[dimensions]]
+dimension = "problem"
+item_types = ["problem"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which supplied problem does this specification address?"
+requested_information = "Traceable problem statement"
+
+[[dimensions]]
+dimension = "segment"
+item_types = ["segment"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which target user or segment is in scope?"
+requested_information = "Explicit target segment"
+
+[[dimensions]]
+dimension = "outcome"
+item_types = ["outcome"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "What desired outcome should this delivery scope support?"
+requested_information = "Explicit desired outcome"
+
+[[dimensions]]
+dimension = "scope"
+item_types = ["scope"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which capabilities are included in this delivery scope?"
+requested_information = "Explicit scope boundaries"
+
+[[dimensions]]
+dimension = "non_goals"
+item_types = ["non_goal"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which capabilities are excluded from this delivery scope?"
+requested_information = "Explicit non-goals"
+
+[[dimensions]]
+dimension = "solution"
+item_types = ["solution"]
+required = true
+applicability = "solution_present"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which supplied solution intent should guide this specification?"
+requested_information = "Grounded solution intent where present"
+
+[[dimensions]]
+dimension = "functional"
+item_types = ["functional_requirement"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "What behavior must the scoped capability provide?"
+requested_information = "Explicit functional requirements"
+
+[[dimensions]]
+dimension = "business_rules"
+item_types = ["business_rule"]
+required = false
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "non_blocking"
+question = "Which business rules apply to the scoped behavior?"
+requested_information = "Applicable business rules or explicit non-applicability"
+
+[[dimensions]]
+dimension = "acceptance"
+item_types = ["acceptance_criterion"]
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "What observable behavior constitutes acceptance of this scope?"
+requested_information = "Grounded acceptance criteria"
+
+[[dimensions]]
+dimension = "quality"
+item_types = ["quality_requirement"]
+required = true
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which quality requirements and required targets apply to this scope?"
+requested_information = "Applicable quality requirements or explicit non-applicability"
+
+[[dimensions]]
+dimension = "interfaces"
+item_types = ["interface"]
+required = true
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "What existing interface contract must product search use, and who owns that contract?"
+requested_information = "Applicable interface contract and accountable contract owner"
+
+[[dimensions]]
+dimension = "data"
+item_types = ["data_requirement"]
+required = true
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which data requirements and constraints apply to this scope?"
+requested_information = "Applicable data requirements or explicit non-applicability"
+
+[[dimensions]]
+dimension = "analytics"
+item_types = ["analytics"]
+required = false
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "non_blocking"
+question = "Which search analytics details should be specified for delivery?"
+requested_information = "Search analytics details"
+
+[[dimensions]]
+dimension = "dependencies"
+item_types = ["dependency"]
+required = true
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which dependencies must be identified before delivery handoff?"
+requested_information = "Applicable dependencies or explicit non-applicability"
+
+[[dimensions]]
+dimension = "constraints"
+item_types = ["constraint"]
+required = false
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "non_blocking"
+question = "Which constraints apply to this delivery scope?"
+requested_information = "Applicable constraints or explicit non-applicability"
+
+[[dimensions]]
+dimension = "risks"
+item_types = ["risk"]
+required = false
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "non_blocking"
+question = "Which delivery risks require an explicit treatment?"
+requested_information = "Applicable risks or explicit non-applicability"
+
+[[dimensions]]
+dimension = "open_questions"
+item_types = ["open_question"]
+required = false
+applicability = "explicit_context"
+minimum = "sufficient"
+gap_classification = "non_blocking"
+question = "Which open delivery questions remain to be decided?"
+requested_information = "Explicit open questions or explicit non-applicability"
+
+[[dimensions]]
+dimension = "traceability"
+item_types = []
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Which supplied source or human decision supports the ungrounded clauses?"
+requested_information = "Provenance references for all known specification clauses"
+
+[[dimensions]]
+dimension = "ownership"
+item_types = []
+required = true
+applicability = "always"
+minimum = "sufficient"
+gap_classification = "blocking"
+question = "Who is the accountable owner of this selected delivery scope?"
+requested_information = "Explicit accountable owner"
+
+[[gate_conditions]]
+condition = "ready_status"
+required = true
+
+[[gate_conditions]]
+condition = "current_spec"
+required = true
+
+[[gate_conditions]]
+condition = "selection"
+required = true
+
+[[gate_conditions]]
+condition = "completeness"
+required = true
+
+[[gate_conditions]]
+condition = "approved_review"
+required = true
+
+[[gate_conditions]]
+condition = "no_blocking_gaps"
+required = true
+
+[[gate_conditions]]
+condition = "clarifications"
+required = true
+
+[[gate_conditions]]
+condition = "acceptance"
+required = true
+
+[[gate_conditions]]
+condition = "interfaces"
+required = true
+
+[[gate_conditions]]
+condition = "data"
+required = true
+
+[[gate_conditions]]
+condition = "quality"
+required = true
+
+[[gate_conditions]]
+condition = "dependencies"
+required = true
+
+[[gate_conditions]]
+condition = "traceability"
+required = true
+
+[[gate_conditions]]
+condition = "owner"
+required = true
+
+[[gate_conditions]]
+condition = "current_policy"
+required = true
+
+[[gate_conditions]]
+condition = "fresh_records"
+required = true
