@@ -118,3 +118,11 @@ Existing Milestone 2/3/5 offline contracts stay required and paid verification s
 deferred. Structural tests and the offline search handoff do not claim live semantic
 verification. Future advisory providers would need offline contracts/golden cases before
 any separately authorized, budgeted live phase.
+
+
+## Milestone 7: no additional live verification
+
+Implementation recording, target evaluation, causal-review constraints, evidence feedback,
+human review and closure are deterministic/human operations. No AI provider, narrative
+summarizer or prompt was introduced; no new live cases are justified. All existing offline
+contracts remain required and the 18 paid live cases remain intentionally deferred.

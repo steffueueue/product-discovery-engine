@@ -47,6 +47,15 @@ class ObjectKind(StrEnum):
     SPEC_REVIEW = "spec_review"
     DELIVERY_GATE = "delivery_gate"
     IMPLEMENTATION_AUTHORIZATION = "implementation_authorization"
+    IMPLEMENTATION = "implementation"
+    RELEASE_OBSERVATION = "release_observation"
+    OUTCOME_PLAN = "outcome_plan"
+    OUTCOME_BASELINE = "outcome_baseline"
+    OUTCOME_OBSERVATION = "outcome_observation"
+    OUTCOME_EVALUATION = "outcome_evaluation"
+    CAUSAL_INTERPRETATION = "causal_interpretation"
+    OUTCOME_REVIEW = "outcome_review"
+    FOLLOW_UP_LEARNING = "follow_up_learning"
 
 
 class AuditTarget(DomainModel):
@@ -111,6 +120,26 @@ class EventType(StrEnum):
     DELIVERY_GATE_BLOCKED = "delivery_gate_blocked"
     DELIVERY_GATE_REVIEW_REQUIRED = "delivery_gate_review_required"
     IMPLEMENTATION_HANDOFF_AUTHORIZED = "implementation_handoff_authorized"
+    IMPLEMENTATION_PLANNED = "implementation_planned"
+    IMPLEMENTATION_STARTED = "implementation_started"
+    IMPLEMENTATION_COMPLETED = "implementation_completed"
+    IMPLEMENTATION_CANCELLED = "implementation_cancelled"
+    IMPLEMENTATION_DEVIATION_RECORDED = "implementation_deviation_recorded"
+    HYPOTHESIS_IMPLEMENTED = "hypothesis_implemented"
+    RELEASE_OBSERVED = "release_observed"
+    OUTCOME_PLAN_CREATED = "outcome_plan_created"
+    OUTCOME_PLAN_REVISED = "outcome_plan_revised"
+    OUTCOME_BASELINE_RECORDED = "outcome_baseline_recorded"
+    OUTCOME_TARGET_RECORDED = "outcome_target_recorded"
+    OUTCOME_TARGET_REVISED = "outcome_target_revised"
+    OUTCOME_OBSERVED = "outcome_observed"
+    HYPOTHESIS_MEASURING_OUTCOME = "hypothesis_measuring_outcome"
+    OUTCOME_EVALUATED = "outcome_evaluated"
+    CAUSAL_INTERPRETATION_RECORDED = "causal_interpretation_recorded"
+    OUTCOME_EVIDENCE_ADDED = "outcome_evidence_added"
+    OUTCOME_REVIEW_COMPLETED = "outcome_review_completed"
+    FOLLOW_UP_LEARNING_LINKED = "follow_up_learning_linked"
+    HYPOTHESIS_CLOSED = "hypothesis_closed"
 
 
 class AuditMetadata(DomainModel):

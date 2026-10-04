@@ -20,7 +20,7 @@ from product_discovery_engine.domain.hypothesis_changes import (
 )
 from product_discovery_engine.domain.lifecycle import HypothesisStatus, InvalidTransition
 
-# Ordinary paths exclude candidacy/selection: dedicated decision operations cover these edges.
+# Dedicated discovery, delivery and outcome operations own their controlled edges.
 EXPECTED: dict[str, set[str]] = {
     "new": {"structured", "parked", "rejected", "merged"},
     "structured": {"needs_evidence", "ready_to_validate", "parked", "rejected", "merged"},
@@ -39,12 +39,12 @@ EXPECTED: dict[str, set[str]] = {
         "parked",
         "rejected",
     },
-    "selected_for_delivery": {"implemented", "parked"},
+    "selected_for_delivery": {"parked"},
     "parked": {"structured", "needs_evidence", "rejected", "merged"},
     "rejected": set(),
     "merged": set(),
-    "implemented": {"measuring_outcome"},
-    "measuring_outcome": {"closed"},
+    "implemented": set(),
+    "measuring_outcome": set(),
     "closed": set(),
 }
 

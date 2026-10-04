@@ -14,7 +14,11 @@ from product_discovery_engine.application.discovery_decisioning import Discovery
 from product_discovery_engine.application.spec_delivery import SpecDeliveryService
 from product_discovery_engine.domain.common import Unknown
 from product_discovery_engine.domain.delivery_context import ContextFact, ReferenceKind
-from product_discovery_engine.domain.delivery_gate import DeliveryGateInput, DeliveryGateState
+from product_discovery_engine.domain.delivery_gate import (
+    DeliveryGateInput,
+    DeliveryGateState,
+    ImplementationAuthorization,
+)
 from product_discovery_engine.domain.delivery_specification import DeliverySpec, DeliverySpecChange
 from product_discovery_engine.domain.lifecycle import HypothesisStatus
 from product_discovery_engine.domain.spec_clarification import (
@@ -215,7 +219,7 @@ def resolve_interface(
     return revision, updated, resolved
 
 
-def main() -> None:
+def authorized_search() -> ImplementationAuthorization:
     scenario = search_specification()
     service = scenario.delivery
     v1 = scenario.draft
@@ -326,6 +330,12 @@ def main() -> None:
         inputs.hypothesis.status.value,
         "— implementation and outcomes remain deferred",
     )
+
+    return authorization
+
+
+def main() -> None:
+    authorized_search()
 
 
 if __name__ == "__main__":

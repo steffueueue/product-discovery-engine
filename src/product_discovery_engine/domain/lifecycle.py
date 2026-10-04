@@ -69,5 +69,9 @@ def require_transition(current: HypothesisStatus, target: HypothesisStatus) -> N
         raise InvalidTransition(
             "invalid hypothesis transition: selection requires Delivery Selection"
         )
+    if target in {S.IMPLEMENTED, S.MEASURING_OUTCOME, S.CLOSED}:
+        raise InvalidTransition(
+            "invalid hypothesis transition: outcome lifecycle requires dedicated operation"
+        )
     if target not in ALLOWED_TRANSITIONS[current]:
         raise InvalidTransition(f"invalid hypothesis transition: {current.value} -> {target.value}")
